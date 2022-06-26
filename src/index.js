@@ -12,8 +12,8 @@ import "./index.scss";
 
 import App from "./App.jsx";
 
-import * as serviceWorkerRegistration from "./serviceWorkerRegistration.js";
-import reportWebVitals from "./reportWebVitals.js";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import reportWebVitals from "./reportWebVitals";
 
 const container = document.getElementById("root");
 
