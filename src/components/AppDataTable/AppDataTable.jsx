@@ -11,9 +11,9 @@ import {
   TableExpandRow,
   TableCell,
   TableExpandedRow,
-} from "carbon-components-react";
+} from "@carbon/react";
 
-const AppDataTable = ({ title, description, rows, headers }) => {  
+const AppDataTable = ({ title, description, rows, headers }) => {
   const getRowDescription = rowId => {
     const row = rows.find(({ id }) => id === rowId);
     return row?.description || "No description";
