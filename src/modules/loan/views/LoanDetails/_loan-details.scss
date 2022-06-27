@@ -44,3 +44,13 @@
   margin-bottom: $spacing-04;
   text-align: center;
 }
+
+.loan-details__payment_amount {
+  flex-grow: 1; // fill space so icons are bottom aligned
+  @include type-style('body-long-01');
+
+  font-weight: bold;
+  color: colors.$green-50;
+  margin-bottom: $spacing-04;
+  text-align: center;
+}

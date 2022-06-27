@@ -7,6 +7,7 @@ import {
 } from "@carbon/react";
 
 import loanService from "../../../loan/loan.service";
+import movementService from "../../../movement/movement.service";
 
 import {
   delay,
@@ -24,6 +25,10 @@ const LoanDetails = () => {
   const [loanDetails, setLoanDetails] = useState(undefined);
   const [loanDetailsLoading, setLoanDetailsLoading] = useState(true);
   const [loanDetailsError, setLoanDetailsError] = useState("");
+
+  const [loanPayments, setLoanPayments] = useState([]);
+  const [loanPaymentsLoading, setLoanPaymentsLoading] = useState(true);
+  const [loanPaymentsError, setLoanPaymentsError] = useState("");
 
   const ctx = useContext(GlobalContext);
   const navigate = useNavigate();
@@ -49,6 +54,23 @@ const LoanDetails = () => {
     setLoanDetailsLoading(false);
   };
 
+  const fetchLoanPayments = async (uid) => {
+    setLoanPaymentsLoading(true);
+
+    try {
+      const [data] = await Promise.all([
+        movementService.getLoanPayments({ uid }),
+        delay(2000),
+      ]);
+
+      setLoanPayments(data);
+    } catch (error) {
+      setLoanPaymentsError(getMessageFromAxiosError(error));
+    }
+
+    setLoanPaymentsLoading(false);
+  };
+
   // check if the user is logged in
   // if not, redirect to login page
   // and set the variables to the state
@@ -58,6 +80,7 @@ const LoanDetails = () => {
     }
 
     fetchLoanDetails(uid);
+    fetchLoanPayments(uid);
   }, [navigate, uid, user]);
 
   return (
@@ -67,7 +90,7 @@ const LoanDetails = () => {
           <BackButton />
           <h3 className="screen__heading">Detalles del prestamo</h3>
           {
-            loanDetailsLoading &&
+            (loanDetailsLoading || loanPaymentsLoading) &&
             <InlineLoading
               status="active"
               iconDescription="Active loading indicator"
@@ -88,7 +111,20 @@ const LoanDetails = () => {
             </div>
           }
           {
+            loanPaymentsError &&
+            <div style={{ marginBottom: "1rem" }}>
+              <InlineNotification
+                kind="error"
+                iconDescription="close button"
+                subtitle={<span>{loanPaymentsError}</span>}
+                title="Uups!"
+                onClose={() => setLoanPaymentsError(undefined)}
+              />
+            </div>
+          }
+          {
             !loanDetailsLoading && !loanDetailsError && loanDetails &&
+            !loanPaymentsLoading && !loanPaymentsError && loanPayments &&
             <>
               <div className="cds--row">
                 <div className="cds--col-lg-16 cds--col-md-8 cds--col-sm-4">
@@ -137,6 +173,40 @@ const LoanDetails = () => {
                     title="Loan status tag">
                     {capitalizeFirstLetter(loanDetails.loanPaymentStatus)}
                   </Tag>
+                </div>
+              </div>
+              <div className="cds--row">
+                <div className="cds--col-lg-16 cds--col-md-8 cds--col-sm-4">
+                  <div style={{ marginBottom: "1rem" }}>
+                    <p>Pagos</p>
+                  </div>
+                  {
+                    loanPayments.length &&
+                    <div>
+                      {loanPayments.map((payment) => {
+                        return (
+                          <>
+                            <div className="cds--row">
+                              <div className="cds--col-lg-8 cds--col-md-4 cds--col-sm-2">
+                                <p className="loan-details__payment_amount">
+                                  {formatCurrency(payment.amount * -1)}
+                                </p>
+                              </div>
+                              <div className="cds--col-lg-8 cds--col-md-4 cds--col-sm-2">
+                                <p className="loan-details__payment_date">{formatDate(payment.at)}</p>
+                              </div>
+                            </div>
+                          </>
+                        );
+                      })}
+                    </div>
+                  }
+                  {
+                    !loanPayments.length &&
+                    <div>
+                      <p>Aún no has realizado pagos.</p>
+                    </div>
+                  }
                 </div>
               </div>
             </>
