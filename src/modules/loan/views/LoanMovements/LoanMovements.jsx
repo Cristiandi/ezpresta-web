@@ -12,6 +12,8 @@ import {
   delay,
   getMessageFromAxiosError,
   subtractDays,
+  formatDate,
+  formatCurrency,
 } from "../../../../utils";
 
 import BackButton from "../../../../components/BackButton";
@@ -40,9 +42,13 @@ const getRowItems = rows =>
     if (row?.movementType?.code === "04P") color = "green";
     if (row?.movementType?.code === "03IM") color = "red";
 
+    const amountToRender = formatCurrency(row?.amount);
+
     return {
       ...row,
-      amount: <span style={{ color }} >{row.amount}</span>,
+      id: "" + row.id,
+      at: formatDate(row.at),
+      amount: <span style={{ color }} >{amountToRender}</span>,
     };
   });
 

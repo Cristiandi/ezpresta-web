@@ -22,6 +22,7 @@ import {
 } from "../../../../utils";
 
 import BackButton from "../../../../components/BackButton";
+import PaymentListItem from "../../../../components/PaymentListItem";
 
 import { GlobalContext } from "../../../../App.jsx";
 
@@ -193,20 +194,11 @@ const LoanDetails = () => {
                     <div>
                       <div>
                         {loanPayments.map((payment) => {
-                          console.log(payment.uid);
                           return (
-                            <>
-                              <div className="cds--row"  key={payment.uid}>
-                                <div className="cds--col-lg-8 cds--col-md-4 cds--col-sm-2">
-                                  <p className="loan-details__payment_amount">
-                                    {formatCurrency(payment.amount * -1)}
-                                  </p>
-                                </div>
-                                <div className="cds--col-lg-8 cds--col-md-4 cds--col-sm-2">
-                                  <p className="loan-details__payment_date">{formatDate(payment.at)}</p>
-                                </div>
-                              </div>
-                            </>
+                            <PaymentListItem
+                              key={payment.id}
+                              amount={payment.amount}
+                              at={payment.at} />
                           );
                         })}
                       </div>
@@ -226,7 +218,7 @@ const LoanDetails = () => {
                       iconDescription="Ver todos"
                       renderIcon={ChevronRight}
                       onClick={() => handleViewAllLoanMovementsButtonClick(uid)}>
-                          Ver todos los movimientos
+                      Ver todos los movimientos
                     </Button>
                   </div>
                 </div>

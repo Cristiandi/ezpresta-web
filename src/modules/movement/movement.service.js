@@ -4,8 +4,7 @@ import environment from "../../environment";
 
 import {
   getIdTokenFromCurrentUser,
-  formatCurrency,
-  formatDate,
+  addMinutes,
 } from "../../utils";
 
 class MovementService {
@@ -23,7 +22,13 @@ class MovementService {
       },
     });
 
-    return [...data];
+    return data.map(item => {
+      return {
+        ...item,
+        id: item.id + "",
+        at: addMinutes(item.at, 5 * 60),
+      };
+    });
   }
 
   async getLoanMovements({ uid, limit = undefined, startDate = undefined, endDate = undefined }) {
@@ -45,9 +50,7 @@ class MovementService {
     return [...data].map(item => {
       return {
         ...item,
-        id: item.id + "",
-        amount: formatCurrency(item.amount < 0 ? item.amount * -1 : item.amount),
-        at: formatDate(item.at),
+        at: addMinutes(item.at, 5 * 60),
         movementTypeName: item?.movementType?.name || "none",
       };
     });

@@ -2,7 +2,10 @@ import axios from "axios";
 
 import environment from "../../environment";
 
-import { getIdTokenFromCurrentUser } from "../../utils";
+import {
+  getIdTokenFromCurrentUser,
+  addMinutes,
+} from "../../utils";
 
 class LoanService {
   async getUserLoans({ userAuthUid, limit = undefined }) {
@@ -33,7 +36,10 @@ class LoanService {
       },
     });
 
-    return data;
+    return {
+      ...data,
+      loanPaymentDate: addMinutes(data.loanPaymentDate, 5 * 60),
+    };
   }
 }
 

@@ -94,3 +94,15 @@ export const subtractDays = (date = new Date(), days = 0) => {
   result.setDate(result.getDate() - days);
   return result;
 };
+
+export const addMinutes = (date = new Date(), minutes = 0) => {
+  const result = new Date(date);
+  result.setMinutes(result.getMinutes() + minutes);
+  return result;
+};
+
+export const subtractMinutes = (date = new Date(), minutes = 0) => {
+  const result = new Date(date);
+  result.setMinutes(result.getMinutes() - minutes);
+  return result;
+};
