@@ -18,6 +18,7 @@ import Home from "./modules/main/views/Home";
 
 import Loans from "./modules/loan/views/Loans";
 import LoanDetails from "./modules/loan/views/LoanDetails";
+import LoanMovements from "./modules/loan/views/LoanMovements";
 
 import Profile from "./modules/user/views/Profile";
 import MyData from "./modules/user/views/MyData";
@@ -54,6 +55,7 @@ const App = () => {
 
             <Route path="/loans" element={<Loans />} />
             <Route path="/loans/:uid" element={<LoanDetails />} />
+            <Route path="/loans/:uid/movements" element={<LoanMovements />} />
 
             <Route path="/user/profile" element={<Profile />} />
             <Route path="/user/my-data" element={<MyData />} />

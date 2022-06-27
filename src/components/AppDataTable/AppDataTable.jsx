@@ -21,6 +21,7 @@ const AppDataTable = ({ title, description, rows, headers }) => {
 
   return (
     <DataTable
+      size="sm"
       rows={rows}
       headers={headers}
       render={({

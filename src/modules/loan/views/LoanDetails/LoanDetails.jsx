@@ -4,7 +4,11 @@ import {
   InlineLoading,
   InlineNotification,
   Tag,
+  Button,
 } from "@carbon/react";
+import {
+  ChevronRight,
+} from "@carbon/icons-react";
 
 import loanService from "../../../loan/loan.service";
 import movementService from "../../../movement/movement.service";
@@ -82,6 +86,10 @@ const LoanDetails = () => {
     fetchLoanDetails(uid);
     fetchLoanPayments(uid);
   }, [navigate, uid, user]);
+
+  const handleViewAllLoanMovementsButtonClick = (uid) => {
+    navigate(`/loans/${uid}/movements`);
+  }
 
   return (
     <div className="cds--grid">
@@ -183,30 +191,44 @@ const LoanDetails = () => {
                   {
                     loanPayments.length > 0 &&
                     <div>
-                      {loanPayments.map((payment) => {
-                        return (
-                          <>
-                            <div className="cds--row">
-                              <div className="cds--col-lg-8 cds--col-md-4 cds--col-sm-2">
-                                <p className="loan-details__payment_amount">
-                                  {formatCurrency(payment.amount * -1)}
-                                </p>
+                      <div>
+                        {loanPayments.map((payment) => {
+                          console.log(payment.uid);
+                          return (
+                            <>
+                              <div className="cds--row"  key={payment.uid}>
+                                <div className="cds--col-lg-8 cds--col-md-4 cds--col-sm-2">
+                                  <p className="loan-details__payment_amount">
+                                    {formatCurrency(payment.amount * -1)}
+                                  </p>
+                                </div>
+                                <div className="cds--col-lg-8 cds--col-md-4 cds--col-sm-2">
+                                  <p className="loan-details__payment_date">{formatDate(payment.at)}</p>
+                                </div>
                               </div>
-                              <div className="cds--col-lg-8 cds--col-md-4 cds--col-sm-2">
-                                <p className="loan-details__payment_date">{formatDate(payment.at)}</p>
-                              </div>
-                            </div>
-                          </>
-                        );
-                      })}
+                            </>
+                          );
+                        })}
+                      </div>
                     </div>
                   }
                   {
                     !loanPayments.length &&
-                    <div>
+                    <div style={{ marginBottom: "1rem" }}>
                       <p>Aún no has realizado pagos.</p>
                     </div>
                   }
+                  <div style={{ marginBottom: "1rem" }}>
+                    <Button
+                      kind="ghost"
+                      size="sm"
+                      label="Ver todos"
+                      iconDescription="Ver todos"
+                      renderIcon={ChevronRight}
+                      onClick={() => handleViewAllLoanMovementsButtonClick(uid)}>
+                          Ver todos los movimientos
+                    </Button>
+                  </div>
                 </div>
               </div>
             </>

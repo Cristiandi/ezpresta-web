@@ -82,3 +82,15 @@ export const getMessageFromAxiosError = (error) => {
 
   return "Something went wrong";
 }
+
+export const addDays = (date = new Date(), days = 0) => {
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+};
+
+export const subtractDays = (date = new Date(), days = 0) => {
+  const result = new Date(date);
+  result.setDate(result.getDate() - days);
+  return result;
+};
