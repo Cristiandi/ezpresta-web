@@ -59,7 +59,7 @@ const LoanDetails = () => {
 
     try {
       const [data] = await Promise.all([
-        movementService.getLoanPayments({ uid }),
+        movementService.getLoanPayments({ uid, limit: 3 }),
         delay(2000),
       ]);
 
@@ -118,7 +118,7 @@ const LoanDetails = () => {
                 iconDescription="close button"
                 subtitle={<span>{loanPaymentsError}</span>}
                 title="Uups!"
-                onClose={() => setLoanPaymentsError(undefined)}
+                onClose={() => setLoanPaymentsError("")}
               />
             </div>
           }
@@ -181,7 +181,7 @@ const LoanDetails = () => {
                     <p>Pagos</p>
                   </div>
                   {
-                    loanPayments.length &&
+                    loanPayments.length > 0 &&
                     <div>
                       {loanPayments.map((payment) => {
                         return (
