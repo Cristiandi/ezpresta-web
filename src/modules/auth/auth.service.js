@@ -116,6 +116,22 @@ class AuthService {
 
     if (auth.currentUser) await auth.signOut();
   }
+
+  async sendResetPasswordEmail({ email }) {
+    const { data } = await axios({
+      url: `${environment.API_URL}users/reset-password-email`,
+      method: "POST",
+      data: {
+        email,
+      },
+    });
+
+    return {
+      ...data,
+      message: "Email enviado, por favor revisa tu bandeja de entrada",
+    };
+  }
+
 }
 
 const authService = new AuthService();

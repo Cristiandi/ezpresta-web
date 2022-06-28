@@ -73,6 +73,10 @@ const Login = () => {
     setLoginLoading(false);
   }
 
+  const handleForgottenPasswordButtonClick = () => {
+    return navigate("/reset-password");
+  }
+
   return (
     <div className="cds--grid">
       <div className="cds--row">
@@ -116,6 +120,11 @@ const Login = () => {
             </div>
             <div style={{ marginBottom: "1rem" }}>
               <Button className="btn-block" size="sm" kind="secondary" disabled={loginLoading} onClick={handleLoginWithGoogle}>Google</Button>
+            </div>
+            <div style={{ marginBottom: "1rem" }}>
+              <Button className="btn-block" size="sm" kind="tertary" disabled={loginLoading} onClick={handleForgottenPasswordButtonClick}>
+                No recuerdas tu contraseña?
+              </Button>
             </div>
           </Form>
         </div>

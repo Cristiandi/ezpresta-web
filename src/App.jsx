@@ -13,6 +13,7 @@ import Landing from "./modules/main/views/Landing";
 
 import Register from "./modules/auth/views/Register";
 import Login from "./modules/auth/views/Login";
+import ResetPassword from "./modules/auth/views/ResetPassword";
 
 import Home from "./modules/main/views/Home";
 
@@ -33,7 +34,7 @@ const App = () => {
 
   const auth = getAuth(firebaseApp);
 
-  onAuthStateChanged(auth, async (currentUser) => {
+  onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
   });
 
@@ -50,6 +51,7 @@ const App = () => {
 
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
 
             <Route path="/home" element={<Home />} />
 
