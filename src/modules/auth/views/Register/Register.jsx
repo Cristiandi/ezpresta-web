@@ -202,7 +202,7 @@ const Register = () => {
                   iconDescription="close button"
                   subtitle={<span>{registerError}</span>}
                   title="Uups!"
-                  onClose={() => setRegisterError(undefined)}
+                  onClose={() => setRegisterError("")}
                 />
               </div>
             }
@@ -215,7 +215,7 @@ const Register = () => {
                   iconDescription="close button"
                   subtitle={<span>{registerMessage}</span>}
                   title="Cool!"
-                  onClose={() => setRegisterMessage(undefined)}
+                  onClose={() => setRegisterMessage("")}
                 />
               </div>
             }

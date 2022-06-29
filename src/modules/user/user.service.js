@@ -110,6 +110,27 @@ class UserService {
       message: "Tú dirección ha sido cambiada con éxito",
     };
   }
+
+  async changePassword({ authUid, oldPassword, newPassword }) {
+    const token = await getIdTokenFromCurrentUser();
+
+    const { data } = await axios({
+      url: `${environment.API_URL}users/${authUid}/password`,
+      method: "PATCH",
+      headers: {
+        "Authorization": `Bearer ${token}`
+      },
+      data: {
+        oldPassword,
+        newPassword,
+      },
+    });
+
+    return {
+      ...data,
+      message: "Tú contraseña ha sido cambiada con éxito",
+    };
+  }
 }
 
 const userService = new UserService();

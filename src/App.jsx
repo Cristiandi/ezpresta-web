@@ -26,6 +26,8 @@ import MyData from "./modules/user/views/MyData";
 import ChangeEmail from "./modules/user/views/ChangeEmail";
 import ChangePhone from "./modules/user/views/ChangePhone";
 import ChangeAddress from "./modules/user/views/ChangeAddress";
+import Security from "./modules/user/views/Security";
+import ChangePassword from "./modules/user/views/ChangePassword";
 
 export const GlobalContext = React.createContext();
 
@@ -64,6 +66,8 @@ const App = () => {
             <Route path="/user/change-email" element={<ChangeEmail />} />
             <Route path="/user/change-phone" element={<ChangePhone />} />
             <Route path="/user/change-address" element={<ChangeAddress />} />
+            <Route path="/user/security" element={<Security />} />
+            <Route path="/user/change-password" element={<ChangePassword />} />
           </Routes>
         </Content>
       </GlobalContext.Provider>

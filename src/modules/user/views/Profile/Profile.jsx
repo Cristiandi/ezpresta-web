@@ -62,7 +62,11 @@ const Profile = () => {
   }, [navigate, user]);
 
   const handleMyDataButtonClick = () => {
-    navigate("/user/my-data");
+    return navigate("/user/my-data");
+  };
+
+  const handleSecurityButtonClick = () => {
+    return navigate("/user/security");
   };
 
   return (
@@ -128,7 +132,8 @@ const Profile = () => {
                   label="Seguridad"
                   iconDescription="Seguridad"
                   className="profile__button"
-                  renderIcon={SecurityServices}>
+                  renderIcon={SecurityServices}
+                  onClick={handleSecurityButtonClick}>
                       Seguridad
                 </Button>
               </div>
