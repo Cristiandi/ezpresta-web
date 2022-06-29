@@ -42,7 +42,7 @@ const getRowItems = rows =>
     if (row?.movementType?.code === "04P") color = "green";
     if (row?.movementType?.code === "03IM") color = "red";
 
-    const amountToRender = formatCurrency(row?.amount);
+    const amountToRender = formatCurrency(row?.amount < 0 ? row?.amount * -1 : row?.amount);
 
     return {
       ...row,
