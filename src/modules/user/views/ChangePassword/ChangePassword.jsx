@@ -24,8 +24,8 @@ const ChangePassword = () => {
   const [invalidConfirmPassword, setInvalidConfirmPassword] = useState(false);
 
   const [changePasswordLoading, setChangePasswordLoading] = useState(false);
-  const [changePasswordError, setChangePasswordError] = useState("");
-  const [changePasswordMessage, setChangePasswordMessage] = useState("");
+  const [changePasswordError, setChangePasswordError] = useState(undefined);
+  const [changePasswordMessage, setChangePasswordMessage] = useState(undefined);
 
   const ctx = useContext(GlobalContext);
   const navigate = useNavigate();
@@ -87,7 +87,7 @@ const ChangePassword = () => {
       <div className="cds--row">
         <div className="cds--offset-lg-5 cds--col-lg-6 cds--col-md-8 cds--col-sm-4">
           <BackButton />
-          <h3 className="screen__heading">Cambiar email</h3>
+          <h3 className="screen__heading">Cambiar contraseña</h3>
           <Form onSubmit={handleChangePasswordSubmit}>
             <div style={{ marginBottom: "1rem" }}>
               <PasswordInput
@@ -124,7 +124,7 @@ const ChangePassword = () => {
                   iconDescription="close button"
                   subtitle={<span>{changePasswordError}</span>}
                   title="Uups!"
-                  onClose={() => setChangePasswordError("")}
+                  onClose={() => setChangePasswordError(undefined)}
                 />
               </div>
             }
@@ -136,7 +136,7 @@ const ChangePassword = () => {
                   iconDescription="close button"
                   subtitle={<span>{changePasswordMessage}</span>}
                   title="Cool!"
-                  onClose={() => setChangePasswordMessage("")}
+                  onClose={() => setChangePasswordMessage(undefined)}
                 />
               </div>
             }

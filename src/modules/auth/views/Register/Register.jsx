@@ -31,9 +31,9 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [invalidConfirmPassword, setInvalidConfirmPassword] = useState(false);
 
-  const [registerError, setRegisterError] = useState("");
+  const [registerError, setRegisterError] = useState(undefined);
   const [registerLoading, setRegisterLoading] = useState(false);
-  const [registerMessage, setRegisterMessage] = useState("");
+  const [registerMessage, setRegisterMessage] = useState(undefined);
 
   const ctx = useContext(GlobalContext);
   const navigate = useNavigate();
@@ -202,7 +202,7 @@ const Register = () => {
                   iconDescription="close button"
                   subtitle={<span>{registerError}</span>}
                   title="Uups!"
-                  onClose={() => setRegisterError("")}
+                  onClose={() => setRegisterError(undefined)}
                 />
               </div>
             }
@@ -215,7 +215,7 @@ const Register = () => {
                   iconDescription="close button"
                   subtitle={<span>{registerMessage}</span>}
                   title="Cool!"
-                  onClose={() => setRegisterMessage("")}
+                  onClose={() => setRegisterMessage(undefined)}
                 />
               </div>
             }
