@@ -14,7 +14,13 @@ import {
   SideNavItems,
   HeaderSideNavItems,
 } from "@carbon/react";
-import { Notification, UserAvatar, Logout, Login, DataFormat } from "@carbon/icons-react";
+import {
+  Notification,
+  UserAvatar,
+  Logout,
+  Login,
+  DataFormat,
+} from "@carbon/icons-react";
 import { Link } from "react-router-dom";
 
 import authService from "../../modules/auth/auth.service";
@@ -29,87 +35,93 @@ const AppHeader = () => {
   const handleLogoutClick = async (event) => {
     event.preventDefault();
     await authService.logout();
-  }
+  };
 
   return (
     <HeaderContainer
       render={({ isSideNavExpanded, onClickSideNavExpand }) => (
         <Header aria-label="EZPresta">
           <SkipToContent />
-          {
-            user &&
+          {user && (
             <HeaderMenuButton
               aria-label="Open menu"
               onClick={onClickSideNavExpand}
               isActive={isSideNavExpanded}
             />
-          }
+          )}
           <HeaderName element={Link} to={user ? "/home" : "/"} prefix="EZ">
             Presta
           </HeaderName>
 
-          {
-            user &&
+          {user && (
             <HeaderNavigation aria-label="EZPresta web">
               <HeaderMenu aria-label="Web links" menuLinkName="Links">
-                <HeaderMenuItem element={Link} to="/help">Ayuda</HeaderMenuItem>
+                <HeaderMenuItem element={Link} to="/help">
+                  Ayuda
+                </HeaderMenuItem>
               </HeaderMenu>
             </HeaderNavigation>
-          }
+          )}
 
-          {
-            user &&
+          {user && (
             <SideNav
               aria-label="Side navigation"
               expanded={isSideNavExpanded}
-              isPersistent={false}>
+              isPersistent={false}
+            >
               <SideNavItems>
                 <HeaderSideNavItems>
-                  <HeaderMenuItem element={Link} to="/help">Ayuda</HeaderMenuItem>
+                  <HeaderMenuItem element={Link} to="/help">
+                    Ayuda
+                  </HeaderMenuItem>
                 </HeaderSideNavItems>
               </SideNavItems>
             </SideNav>
-          }
+          )}
 
-          {
-            user &&
+          {user && (
             <HeaderGlobalBar>
               <HeaderGlobalAction
                 aria-label="Notificaciones"
-                tooltipAlignment="center">
+                tooltipAlignment="center"
+              >
                 <Notification size={20} />
               </HeaderGlobalAction>
-              <HeaderGlobalAction
-                aria-label="Perfil"
-                tooltipAlignment="center">
+              <HeaderGlobalAction aria-label="Perfil" tooltipAlignment="center">
                 <Link to="/user/profile">
                   <UserAvatar size={20} />
                 </Link>
               </HeaderGlobalAction>
-              <HeaderGlobalAction aria-label="Salir" tooltipAlignment="end" onClick={handleLogoutClick}>
+              <HeaderGlobalAction
+                aria-label="Salir"
+                tooltipAlignment="end"
+                onClick={handleLogoutClick}
+              >
                 <Logout size={20} />
               </HeaderGlobalAction>
             </HeaderGlobalBar>
-          }
+          )}
 
-          {
-            !user &&
+          {!user && (
             <HeaderGlobalBar>
               <HeaderGlobalAction
                 aria-label="Inicia sesión"
-                tooltipAlignment="center">
+                tooltipAlignment="center"
+              >
                 <Link to="/login">
                   <Login size={20} />
                 </Link>
               </HeaderGlobalAction>
-              <HeaderGlobalAction aria-label="Registrate" tooltipAlignment="end">
+              <HeaderGlobalAction
+                aria-label="Registrate"
+                tooltipAlignment="end"
+              >
                 <Link to="/register">
                   <DataFormat size={20} />
                 </Link>
               </HeaderGlobalAction>
             </HeaderGlobalBar>
-          }
-
+          )}
         </Header>
       )}
     />

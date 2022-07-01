@@ -46,11 +46,13 @@
     "@commitlint/cli": "17.0.2",
     "@commitlint/config-conventional": "17.0.2",
     "eslint": "8.18.0",
+    "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jsx-a11y": "6.6.0",
     "eslint-plugin-react": "7.30.1",
     "husky": "8.0.1",
-    "lint-staged": "13.0.2"
+    "lint-staged": "13.0.2",
+    "prettier": "2.7.1"
   },
   "browserslist": {
     "production": [
@@ -71,10 +73,12 @@
   },
   "lint-staged": {
     "*.js": [
-      "npm run lint:fix"
+      "npm run lint:fix",
+      "prettier --write"
     ],
     "*.jsx": [
-      "npm run lint:fix"
+      "npm run lint:fix",
+      "prettier --write"
     ]
   }
 }

@@ -65,17 +65,17 @@ const Login = () => {
     setLoginLoading(true);
 
     try {
-      await authService.loginWithGoogle()
+      await authService.loginWithGoogle();
     } catch (error) {
       setLoginError(error.message);
     }
 
     setLoginLoading(false);
-  }
+  };
 
   const handleForgottenPasswordButtonClick = () => {
     return navigate("/reset-password");
-  }
+  };
 
   return (
     <div className="cds--grid">
@@ -102,8 +102,7 @@ const Login = () => {
               />
             </div>
 
-            {
-              loginError &&
+            {loginError && (
               <div style={{ marginBottom: "1rem" }}>
                 <InlineNotification
                   kind="error"
@@ -113,16 +112,37 @@ const Login = () => {
                   onClose={() => setLoginError(undefined)}
                 />
               </div>
-            }
+            )}
 
             <div style={{ marginBottom: "1rem" }}>
-              <Button className="btn-block" type="submit" size="sm" disabled={loginLoading}>Inicia sesión</Button>
+              <Button
+                className="btn-block"
+                type="submit"
+                size="sm"
+                disabled={loginLoading}
+              >
+                Inicia sesión
+              </Button>
             </div>
             <div style={{ marginBottom: "1rem" }}>
-              <Button className="btn-block" size="sm" kind="secondary" disabled={loginLoading} onClick={handleLoginWithGoogle}>Google</Button>
+              <Button
+                className="btn-block"
+                size="sm"
+                kind="secondary"
+                disabled={loginLoading}
+                onClick={handleLoginWithGoogle}
+              >
+                Google
+              </Button>
             </div>
             <div style={{ marginBottom: "1rem" }}>
-              <Button className="btn-block" size="sm" kind="tertiary" disabled={loginLoading} onClick={handleForgottenPasswordButtonClick}>
+              <Button
+                className="btn-block"
+                size="sm"
+                kind="tertiary"
+                disabled={loginLoading}
+                onClick={handleForgottenPasswordButtonClick}
+              >
                 No recuerdas tu contraseña?
               </Button>
             </div>

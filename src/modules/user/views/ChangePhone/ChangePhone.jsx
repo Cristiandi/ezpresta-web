@@ -1,11 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Form,
-  NumberInput,
-  InlineNotification,
-  Button,
-} from "@carbon/react";
+import { Form, NumberInput, InlineNotification, Button } from "@carbon/react";
 
 import userService from "../../../user/user.service.js";
 
@@ -76,8 +71,7 @@ const ChangePhone = () => {
                 onChange={(event) => setPhone(event.target.value)}
               />
             </div>
-            {
-              changePhoneError &&
+            {changePhoneError && (
               <div style={{ marginBottom: "1rem" }}>
                 <InlineNotification
                   kind="error"
@@ -87,9 +81,8 @@ const ChangePhone = () => {
                   onClose={() => setChangePhoneError(undefined)}
                 />
               </div>
-            }
-            {
-              changePhoneMessage &&
+            )}
+            {changePhoneMessage && (
               <div style={{ marginBottom: "1rem" }}>
                 <InlineNotification
                   kind="success"
@@ -99,10 +92,17 @@ const ChangePhone = () => {
                   onClose={() => setChangePhoneMessage(undefined)}
                 />
               </div>
-            }
+            )}
 
             <div style={{ marginBottom: "1rem" }}>
-              <Button className="btn-block" type="submit" size="sm" disabled={changePhoneLoading}>Cambiar</Button>
+              <Button
+                className="btn-block"
+                type="submit"
+                size="sm"
+                disabled={changePhoneLoading}
+              >
+                Cambiar
+              </Button>
             </div>
           </Form>
         </div>

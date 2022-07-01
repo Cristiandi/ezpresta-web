@@ -11,7 +11,7 @@ class UserService {
     email,
     phone,
     address,
-    password
+    password,
   }) {
     const { data } = await axios({
       url: `${environment.API_URL}users/borrower`,
@@ -39,7 +39,7 @@ class UserService {
       url: `${environment.API_URL}users/${authUid}`,
       method: "GET",
       headers: {
-        "Authorization": `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -55,7 +55,7 @@ class UserService {
       url: `${environment.API_URL}users/email`,
       method: "PATCH",
       headers: {
-        "Authorization": `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
       data: {
         authUid,
@@ -76,7 +76,7 @@ class UserService {
       url: `${environment.API_URL}users/phone`,
       method: "PATCH",
       headers: {
-        "Authorization": `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
       data: {
         authUid,
@@ -97,7 +97,7 @@ class UserService {
       url: `${environment.API_URL}users/address`,
       method: "PATCH",
       headers: {
-        "Authorization": `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
       data: {
         authUid,
@@ -118,7 +118,7 @@ class UserService {
       url: `${environment.API_URL}users/${authUid}/password`,
       method: "PATCH",
       headers: {
-        "Authorization": `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
       data: {
         oldPassword,

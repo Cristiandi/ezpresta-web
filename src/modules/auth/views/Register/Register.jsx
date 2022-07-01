@@ -194,8 +194,7 @@ const Register = () => {
               />
             </div>
 
-            {
-              registerError &&
+            {registerError && (
               <div style={{ marginBottom: "1rem" }}>
                 <InlineNotification
                   kind="error"
@@ -205,10 +204,9 @@ const Register = () => {
                   onClose={() => setRegisterError(undefined)}
                 />
               </div>
-            }
+            )}
 
-            {
-              registerMessage &&
+            {registerMessage && (
               <div style={{ marginBottom: "1rem" }}>
                 <InlineNotification
                   kind="success"
@@ -218,10 +216,17 @@ const Register = () => {
                   onClose={() => setRegisterMessage(undefined)}
                 />
               </div>
-            }
+            )}
 
             <div style={{ marginBottom: "1rem" }}>
-              <Button className="btn-block" type="submit" size="sm" disabled={registerLoading}>Registrate</Button>
+              <Button
+                className="btn-block"
+                type="submit"
+                size="sm"
+                disabled={registerLoading}
+              >
+                Registrate
+              </Button>
             </div>
           </Form>
         </div>

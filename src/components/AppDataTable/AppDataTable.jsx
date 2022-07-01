@@ -14,7 +14,7 @@ import {
 } from "@carbon/react";
 
 const AppDataTable = ({ title, description, rows, headers }) => {
-  const getRowDescription = rowId => {
+  const getRowDescription = (rowId) => {
     const row = rows.find(({ id }) => id === rowId);
     return row?.description || "No description";
   };
@@ -31,14 +31,12 @@ const AppDataTable = ({ title, description, rows, headers }) => {
         getRowProps,
         getTableProps,
       }) => (
-        <TableContainer
-          title={title}
-          description={description}>
+        <TableContainer title={title} description={description}>
           <Table {...getTableProps()}>
             <TableHead>
               <TableRow>
                 <TableExpandHeader />
-                {headers.map(header => (
+                {headers.map((header) => (
                   <TableHeader key={header.key} {...getHeaderProps({ header })}>
                     {header.header}
                   </TableHeader>
@@ -46,11 +44,15 @@ const AppDataTable = ({ title, description, rows, headers }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map(row => (
+              {rows.map((row) => (
                 <React.Fragment key={row.id}>
                   <TableExpandRow {...getRowProps({ row })}>
-                    {row.cells.map(cell => (
-                      <TableCell key={cell.id}>{typeof cell.value === "boolean" ? String(cell.value) : cell.value}</TableCell>
+                    {row.cells.map((cell) => (
+                      <TableCell key={cell.id}>
+                        {typeof cell.value === "boolean"
+                          ? String(cell.value)
+                          : cell.value}
+                      </TableCell>
                     ))}
                   </TableExpandRow>
                   <TableExpandedRow colSpan={headers.length + 1}>

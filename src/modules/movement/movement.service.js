@@ -2,10 +2,7 @@ import axios from "axios";
 
 import environment from "../../environment";
 
-import {
-  getIdTokenFromCurrentUser,
-  addMinutes,
-} from "../../utils";
+import { getIdTokenFromCurrentUser, addMinutes } from "../../utils";
 
 class MovementService {
   async getLoanPayments({ uid, limit = undefined }) {
@@ -15,14 +12,14 @@ class MovementService {
       url: `${environment.API_URL}movements/loan/${uid}/payments`,
       method: "GET",
       headers: {
-        "Authorization": `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
       params: {
         limit: limit,
       },
     });
 
-    return data.map(item => {
+    return data.map((item) => {
       return {
         ...item,
         id: item.id + "",
@@ -31,14 +28,19 @@ class MovementService {
     });
   }
 
-  async getLoanMovements({ uid, limit = undefined, startDate = undefined, endDate = undefined }) {
+  async getLoanMovements({
+    uid,
+    limit = undefined,
+    startDate = undefined,
+    endDate = undefined,
+  }) {
     const token = await getIdTokenFromCurrentUser();
 
     const { data } = await axios({
       url: `${environment.API_URL}movements/loan/${uid}/movements`,
       method: "GET",
       headers: {
-        "Authorization": `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
       params: {
         limit,
@@ -47,7 +49,7 @@ class MovementService {
       },
     });
 
-    return [...data].map(item => {
+    return [...data].map((item) => {
       return {
         ...item,
         at: addMinutes(item.at, 5 * 60),

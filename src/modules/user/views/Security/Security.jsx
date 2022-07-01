@@ -1,11 +1,7 @@
-import React, { useContext, useEffect, } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Button,
-} from "@carbon/react";
-import {
-  Password,
-} from "@carbon/icons-react";
+import { Button } from "@carbon/react";
+import { Password } from "@carbon/icons-react";
 
 import BackButton from "../../../../components/BackButton";
 
@@ -41,7 +37,8 @@ const Security = () => {
               iconDescription="Cambiar contraseña"
               className="profile__button"
               renderIcon={Password}
-              onClick={handleChangePasswordButtonClick}>
+              onClick={handleChangePasswordButtonClick}
+            >
               &nbsp;
             </Button>
           </div>

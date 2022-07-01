@@ -32,12 +32,12 @@ export const delay = (ms) => {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
-}
+};
 
 // function to capitalize first letter of string
 export const capitalizeFirstLetter = (value = "") => {
   return value.charAt(0).toUpperCase() + value.slice(1);
-}
+};
 
 // function to format currency
 export const formatCurrency = (value = 0) => {
@@ -45,7 +45,7 @@ export const formatCurrency = (value = 0) => {
     style: "currency",
     currency: "COP",
   }).format(value);
-}
+};
 
 // function to format date
 export const formatDate = (value = "") => {
@@ -56,7 +56,7 @@ export const formatDate = (value = "") => {
     month: "2-digit",
     day: "2-digit",
   }).format(parsedDate);
-}
+};
 
 // function to format date time
 export const formatDateTime = (value = "") => {
@@ -70,11 +70,10 @@ export const formatDateTime = (value = "") => {
     minute: "2-digit",
     second: "2-digit",
   });
-}
+};
 
 export const getMessageFromAxiosError = (error) => {
   if (error.response) {
-
     const { data } = error.response;
 
     if (data && data.message) {
@@ -83,7 +82,7 @@ export const getMessageFromAxiosError = (error) => {
   }
 
   return "Something went wrong";
-}
+};
 
 export const addDays = (date = new Date(), days = 0) => {
   const result = new Date(date);
@@ -113,10 +112,17 @@ export const calculateEpaycoFee = (value = 0) => {
   return value * 0.03 + 900;
 };
 
-export const buildWhatsappLinkForCoordinationPaymentMessage = ({ amount, loanUid }) => {
+export const buildWhatsappLinkForCoordinationPaymentMessage = ({
+  amount,
+  loanUid,
+}) => {
   const phoneNumber = environment.CRISTIANDI_PHONE_NUMBER;
-  const message = `Hola, deseo pagar ${formatCurrency(amount)} para el préstamo: ${loanUid}. ` +
-    "Como podemos coordinar?"
+  const message =
+    `Hola, deseo pagar ${formatCurrency(
+      amount
+    )} para el préstamo: ${loanUid}. ` + "Como podemos coordinar?";
 
-  return `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+  return `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(
+    message
+  )}`;
 };

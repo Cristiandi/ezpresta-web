@@ -1,11 +1,11 @@
-@use '@carbon/react/scss/spacing' as *;
-@use '@carbon/react/scss/type' as *;
-@use '@carbon/react/scss/breakpoint' as *;
+@use "@carbon/react/scss/spacing" as *;
+@use "@carbon/react/scss/type" as *;
+@use "@carbon/react/scss/breakpoint" as *;
 
-@use '@carbon/react/scss/colors';
+@use "@carbon/react/scss/colors";
 
 .loan-details__heading {
-  @include type-style('heading-02');
+  @include type-style("heading-02");
 
   text-align: center;
 }
@@ -24,7 +24,7 @@
 .loan-details__label {
   margin-top: $spacing-04;
   flex-grow: 1; // fill space so icons are bottom aligned
-  @include type-style('body-long-01');
+  @include type-style("body-long-01");
 
   font-weight: bold;
   color: colors.$gray-30;
@@ -37,7 +37,7 @@
 
 .loan-details__payment_date {
   flex-grow: 1; // fill space so icons are bottom aligned
-  @include type-style('body-long-01');
+  @include type-style("body-long-01");
 
   font-weight: bold;
   color: colors.$gray-50;
@@ -47,7 +47,7 @@
 
 .loan-details__payment_amount {
   flex-grow: 1; // fill space so icons are bottom aligned
-  @include type-style('body-long-01');
+  @include type-style("body-long-01");
 
   font-weight: bold;
   color: colors.$green-50;

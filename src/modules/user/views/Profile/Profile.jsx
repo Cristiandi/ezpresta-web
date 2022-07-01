@@ -74,17 +74,15 @@ const Profile = () => {
       <div className="cds--row">
         <div className="cds--offset-lg-5 cds--col-lg-6 cds--col-md-8 cds--col-sm-4">
           <BackButton />
-          {
-            userInfoLoading &&
+          {userInfoLoading && (
             <InlineLoading
               status="active"
               iconDescription="Active loading indicator"
               description="Cargando..."
               className={"center-screen"}
             />
-          }
-          {
-            userInfoError &&
+          )}
+          {userInfoError && (
             <div style={{ marginBottom: "1rem" }}>
               <InlineNotification
                 kind="error"
@@ -94,23 +92,30 @@ const Profile = () => {
                 onClose={() => setUserInfoError(undefined)}
               />
             </div>
-          }
-          {
-            userInfo &&
+          )}
+          {userInfo && (
             <>
-              <img className="profile__image" src={`${process.env.PUBLIC_URL}/default-profile-image.jpg`} alt="Avatar" />
+              <img
+                className="profile__image"
+                src={`${process.env.PUBLIC_URL}/default-profile-image.jpg`}
+                alt="Avatar"
+              />
               <div style={{ textAlign: "center" }}>
                 <IconButton
                   kind="ghost"
                   size="sm"
                   label="Subir imagen"
                   iconDescription="Subir imagen"
-                  renderIcon={Camera} />
+                  renderIcon={Camera}
+                />
               </div>
               <div style={{ marginBottom: "1rem" }}>
-                <h3 className="profile__heading">{capitalizeFirstLetter(userInfo.fullName)}</h3>
+                <h3 className="profile__heading">
+                  {capitalizeFirstLetter(userInfo.fullName)}
+                </h3>
                 <p className="profile__subheading">
-                  Último ingreso: {formatDateTime(user?.metadata?.lastSignInTime)}
+                  Último ingreso:{" "}
+                  {formatDateTime(user?.metadata?.lastSignInTime)}
                 </p>
               </div>
               <div style={{ marginBottom: "1rem" }}>
@@ -121,8 +126,9 @@ const Profile = () => {
                   iconDescription="Mis datos"
                   className="profile__button"
                   renderIcon={Identification}
-                  onClick={handleMyDataButtonClick} >
-                      Mis datos
+                  onClick={handleMyDataButtonClick}
+                >
+                  Mis datos
                 </Button>
               </div>
               <div style={{ marginBottom: "1rem" }}>
@@ -133,8 +139,9 @@ const Profile = () => {
                   iconDescription="Seguridad"
                   className="profile__button"
                   renderIcon={SecurityServices}
-                  onClick={handleSecurityButtonClick}>
-                      Seguridad
+                  onClick={handleSecurityButtonClick}
+                >
+                  Seguridad
                 </Button>
               </div>
               <div style={{ marginBottom: "1rem" }}>
@@ -144,12 +151,13 @@ const Profile = () => {
                   label="Seguridad"
                   iconDescription="Seguridad"
                   className="profile__button"
-                  renderIcon={Document}>
-                      Teminos y privacidad
+                  renderIcon={Document}
+                >
+                  Teminos y privacidad
                 </Button>
               </div>
             </>
-          }
+          )}
         </div>
       </div>
     </div>

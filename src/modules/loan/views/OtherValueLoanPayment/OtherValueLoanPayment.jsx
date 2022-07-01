@@ -6,9 +6,7 @@ import {
   Button,
   TextInput,
 } from "@carbon/react";
-import {
-  Chat,
-} from "@carbon/icons-react";
+import { Chat } from "@carbon/icons-react";
 
 import loanService from "../../loan.service";
 
@@ -95,7 +93,7 @@ const MinimumLoanPayment = () => {
     });
     window.open(link, "_blank");
     return;
-  }
+  };
 
   return (
     <div className="cds--grid">
@@ -103,38 +101,40 @@ const MinimumLoanPayment = () => {
         <div className="cds--offset-lg-5 cds--col-lg-6 cds--col-md-8 cds--col-sm-4">
           <BackButton />
           <h3 className="screen__heading">Pagar otro valor</h3>
-          {
-            loanDetailsLoading &&
+          {loanDetailsLoading && (
             <InlineLoading
               status="active"
               iconDescription="Active loading indicator"
               description="Cargando..."
               className={"center-screen"}
             />
-          }
-          {
-            loanDetailsError &&
+          )}
+          {loanDetailsError && (
             <div style={{ marginBottom: "1rem" }}>
               <InlineNotification
                 kind="error"
                 iconDescription="close button"
                 subtitle={<span>{loanDetailsError}</span>}
                 title="Uups!"
-                onClose={() => setLoanDetailsError(undefined)} />
+                onClose={() => setLoanDetailsError(undefined)}
+              />
             </div>
-          }
-          {
-            !loanDetailsLoading && !loanDetailsError && loanDetails &&
+          )}
+          {!loanDetailsLoading && !loanDetailsError && loanDetails && (
             <>
               <div style={{ marginBottom: "1rem" }}>
                 <div className="cds--row">
                   <div className="cds--col">
                     <p className="loan-details__label">Pago mínimo</p>
-                    <p style={{ textAlign: "center" }}>{formatCurrency(loanDetails.minimumLoanPaymentAmount)}</p>
+                    <p style={{ textAlign: "center" }}>
+                      {formatCurrency(loanDetails.minimumLoanPaymentAmount)}
+                    </p>
                   </div>
                   <div className="cds--col">
                     <p className="loan-details__label">Pago total</p>
-                    <p style={{ textAlign: "center" }}>{formatCurrency(loanDetails.totalLoanAmount)}</p>
+                    <p style={{ textAlign: "center" }}>
+                      {formatCurrency(loanDetails.totalLoanAmount)}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -144,17 +144,22 @@ const MinimumLoanPayment = () => {
                   labelText="Valor a pagar"
                   invalid={invalidValueToPay}
                   invalidText="Valor inválido"
-                  onChange={(event) => setValueToPay(event.target.value)} />
-              </div><div style={{ marginBottom: "1rem" }}>
+                  onChange={(event) => setValueToPay(event.target.value)}
+                />
+              </div>
+              <div style={{ marginBottom: "1rem" }}>
                 <Button
                   className="btn-block"
                   size="sm"
                   style={{ width: "100%", maxWidth: "100%" }}
                   renderIcon={Chat}
-                  onClick={handleCoordinatePaymentButtonClick}>Coordinar pago</Button>
+                  onClick={handleCoordinatePaymentButtonClick}
+                >
+                  Coordinar pago
+                </Button>
               </div>
             </>
-          }
+          )}
         </div>
       </div>
     </div>

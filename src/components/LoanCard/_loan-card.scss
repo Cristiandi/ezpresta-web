@@ -1,23 +1,24 @@
-@use '@carbon/react/scss/spacing' as *;
-@use '@carbon/react/scss/type' as *;
-@use '@carbon/react/scss/breakpoint' as *;
+@use "@carbon/react/scss/spacing" as *;
+@use "@carbon/react/scss/type" as *;
+@use "@carbon/react/scss/breakpoint" as *;
 
-@use '@carbon/react/scss/colors';
+@use "@carbon/react/scss/colors";
 
 .loan-card {
   /* Add shadows to create the "card" effect */
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border-radius: 5px; /* 5px rounded corners */
 }
 
 /* On mouse-over, add a deeper shadow */
-.loan-card:hover, .loan-card:active {
-  box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
+.loan-card:hover,
+.loan-card:active {
+  box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.2);
 }
 
 .loan-card__heading {
-  @include type-style('heading-01');
+  @include type-style("heading-01");
 
   margin-top: $spacing-04;
 }
@@ -37,7 +38,7 @@
 .loan-card__label {
   margin-top: $spacing-04;
   flex-grow: 1; // fill space so icons are bottom aligned
-  @include type-style('body-long-01');
+  @include type-style("body-long-01");
 
   // prevent large line lengths between small and medium viewports
   @include breakpoint-between(321px, md) {
@@ -50,7 +51,7 @@
 
 .loan-card__payment_date {
   flex-grow: 1; // fill space so icons are bottom aligned
-  @include type-style('body-long-01');
+  @include type-style("body-long-01");
 
   // prevent large line lengths between small and medium viewports
   @include breakpoint-between(321px, md) {

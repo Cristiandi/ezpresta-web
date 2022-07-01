@@ -3,7 +3,6 @@ import React from "react";
 import { formatCurrency, formatDate } from "../../utils";
 
 const LoanCard = ({ amount, at }) => {
-
   return (
     <div>
       <div className="cds--grid">

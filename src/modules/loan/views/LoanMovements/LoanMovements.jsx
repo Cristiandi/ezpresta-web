@@ -1,10 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  InlineLoading,
-  InlineNotification,
-  Pagination,
-} from "@carbon/react";
+import { InlineLoading, InlineNotification, Pagination } from "@carbon/react";
 
 import movementService from "../../../movement/movement.service";
 
@@ -36,19 +32,21 @@ const headers = [
   },
 ];
 
-const getRowItems = rows =>
-  rows.map(row => {
+const getRowItems = (rows) =>
+  rows.map((row) => {
     let color;
     if (row?.movementType?.code === "04P") color = "green";
     if (row?.movementType?.code === "03IM") color = "red";
 
-    const amountToRender = formatCurrency(row?.amount < 0 ? row?.amount * -1 : row?.amount);
+    const amountToRender = formatCurrency(
+      row?.amount < 0 ? row?.amount * -1 : row?.amount
+    );
 
     return {
       ...row,
       id: "" + row.id,
       at: formatDate(row.at),
-      amount: <span style={{ color }} >{amountToRender}</span>,
+      amount: <span style={{ color }}>{amountToRender}</span>,
     };
   });
 
@@ -75,7 +73,10 @@ const LoanMovements = () => {
       const dateToGetLoanMovements = subtractDays(currentDate, 30);
 
       const [data] = await Promise.all([
-        movementService.getLoanMovements({ uid, startDate: dateToGetLoanMovements }),
+        movementService.getLoanMovements({
+          uid,
+          startDate: dateToGetLoanMovements,
+        }),
         delay(2000),
       ]);
 
@@ -87,7 +88,7 @@ const LoanMovements = () => {
     }
 
     setLoanMovementsLoading(false);
-  }
+  };
 
   useEffect(() => {
     if (!user) {
@@ -102,17 +103,15 @@ const LoanMovements = () => {
         <div className="cds--offset-lg-5 cds--col-lg-6 cds--col-md-8 cds--col-sm-4">
           <BackButton />
           <h3 className="screen__heading">Movimientos</h3>
-          {
-            loanMovementsLoading &&
+          {loanMovementsLoading && (
             <InlineLoading
               status="active"
               iconDescription="Active loading indicator"
               description="Cargando..."
               className={"center-screen"}
             />
-          }
-          {
-            loanMovementsError &&
+          )}
+          {loanMovementsError && (
             <div style={{ marginBottom: "1rem" }}>
               <InlineNotification
                 kind="error"
@@ -122,9 +121,8 @@ const LoanMovements = () => {
                 onClose={() => setLoanMovementsError(undefined)}
               />
             </div>
-          }
-          {
-            !loanMovementsLoading && !loanMovementsError && loanMovements &&
+          )}
+          {!loanMovementsLoading && !loanMovementsError && loanMovements && (
             <>
               <div style={{ marginBottom: "1rem" }}>
                 <AppDataTable
@@ -134,7 +132,8 @@ const LoanMovements = () => {
                   rows={loanMovements.slice(
                     firstRowIndex,
                     firstRowIndex + currentPageSize
-                  )} />
+                  )}
+                />
                 <Pagination
                   totalItems={loanMovements.length}
                   backwardText="Anterior"
@@ -148,14 +147,15 @@ const LoanMovements = () => {
                     }
                     setFirstRowIndex(pageSize * (page - 1));
                   }}
-                  size="sm"/>
+                  size="sm"
+                />
               </div>
             </>
-          }
+          )}
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default LoanMovements;

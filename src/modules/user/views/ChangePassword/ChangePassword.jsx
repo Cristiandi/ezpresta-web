@@ -1,11 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Form,
-  PasswordInput,
-  InlineNotification,
-  Button,
-} from "@carbon/react";
+import { Form, PasswordInput, InlineNotification, Button } from "@carbon/react";
 
 import userService from "../../../user/user.service.js";
 
@@ -74,8 +69,7 @@ const ChangePassword = () => {
         newPassword,
       });
       setChangePasswordMessage("Password changed successfully");
-    }
-    catch (error) {
+    } catch (error) {
       setChangePasswordError(getMessageFromAxiosError(error));
     }
 
@@ -116,8 +110,7 @@ const ChangePassword = () => {
                 onChange={(event) => setConfirmPassword(event.target.value)}
               />
             </div>
-            {
-              changePasswordError &&
+            {changePasswordError && (
               <div style={{ marginBottom: "1rem" }}>
                 <InlineNotification
                   kind="error"
@@ -127,9 +120,8 @@ const ChangePassword = () => {
                   onClose={() => setChangePasswordError(undefined)}
                 />
               </div>
-            }
-            {
-              changePasswordMessage &&
+            )}
+            {changePasswordMessage && (
               <div style={{ marginBottom: "1rem" }}>
                 <InlineNotification
                   kind="success"
@@ -139,10 +131,17 @@ const ChangePassword = () => {
                   onClose={() => setChangePasswordMessage(undefined)}
                 />
               </div>
-            }
+            )}
 
             <div style={{ marginBottom: "1rem" }}>
-              <Button className="btn-block" type="submit" size="sm" disabled={changePasswordLoading}>Cambiar</Button>
+              <Button
+                className="btn-block"
+                type="submit"
+                size="sm"
+                disabled={changePasswordLoading}
+              >
+                Cambiar
+              </Button>
             </div>
           </Form>
         </div>

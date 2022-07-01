@@ -1,10 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import {
-  InlineLoading,
-  Button,
-} from "@carbon/react";
+import { InlineLoading, Button } from "@carbon/react";
 import { ChevronRight } from "@carbon/icons-react";
 
 import userService from "../../../user/user.service";
@@ -35,7 +32,7 @@ const greet = () => {
   if (hour >= 18) {
     return "Buenas noches";
   }
-}
+};
 
 const Home = () => {
   const [userInfo, setUserInfo] = useState(undefined);
@@ -81,7 +78,7 @@ const Home = () => {
     }
 
     setLoadingLoansInfo(false);
-  }
+  };
 
   useEffect(() => {
     if (!user) {
@@ -94,23 +91,21 @@ const Home = () => {
 
   const handleViewAllLoansButtonClick = () => {
     navigate("/loans");
-  }
+  };
 
   return (
     <div className="cds--grid">
       <div className="cds--row">
         <div className="cds--offset-lg-5 cds--col-lg-6 cds--col-md-8 cds--col-sm-4">
-          {
-            (loadingUserInfo || loadingLoansInfo) &&
+          {(loadingUserInfo || loadingLoansInfo) && (
             <InlineLoading
               status="active"
               iconDescription="Active loading indicator"
               description="Cargando..."
               className={"center-screen"}
             />
-          }
-          {
-            !loadingUserInfo && !loadingLoansInfo && userInfo &&
+          )}
+          {!loadingUserInfo && !loadingLoansInfo && userInfo && (
             <>
               <div style={{ marginBottom: "1rem" }}>
                 <p>{greet()}</p>
@@ -119,17 +114,11 @@ const Home = () => {
               <div style={{ marginBottom: "1rem" }}>
                 {loansInfo.map((loanInfo, index) => {
                   if (!index) {
-                    return (
-                      <LoanCard
-                        key={loanInfo.id}
-                        {...loanInfo}
-                      />
-                    );
+                    return <LoanCard key={loanInfo.id} {...loanInfo} />;
                   }
                 })}
               </div>
-              {
-                loansInfo.length > 1 &&
+              {loansInfo.length > 1 && (
                 <div style={{ marginBottom: "1rem" }}>
                   <Button
                     kind="ghost"
@@ -137,13 +126,14 @@ const Home = () => {
                     label="Ver todos"
                     iconDescription="Ver todos"
                     renderIcon={ChevronRight}
-                    onClick={handleViewAllLoansButtonClick}>
+                    onClick={handleViewAllLoansButtonClick}
+                  >
                     Tús prestamos
                   </Button>
                 </div>
-              }
+              )}
             </>
-          }
+          )}
         </div>
       </div>
     </div>

@@ -55,19 +55,23 @@ class AuthService {
   }
 
   async login({ email, password }) {
-    console.log("LOGIN WITH EMAIL");
+    // console.log("LOGIN WITH EMAIL");
 
     const auth = getAuth(firebaseApp);
 
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
 
     const { providerId } = userCredential;
 
     if (providerId) setFirebaseProviderId(providerId);
   }
 
-  async loginWithGoogle () {
-    console.log("LOGIN WITH GOOGLE");
+  loginWithGoogle() {
+    // console.log("LOGIN WITH GOOGLE");
 
     throw new Error("Not implemented");
 
@@ -131,7 +135,6 @@ class AuthService {
       message: "Email enviado, por favor revisa tu bandeja de entrada",
     };
   }
-
 }
 
 const authService = new AuthService();

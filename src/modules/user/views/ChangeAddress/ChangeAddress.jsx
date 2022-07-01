@@ -1,11 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Form,
-  TextInput,
-  InlineNotification,
-  Button,
-} from "@carbon/react";
+import { Form, TextInput, InlineNotification, Button } from "@carbon/react";
 
 import userService from "../../../user/user.service.js";
 
@@ -75,8 +70,7 @@ const ChangeAddress = () => {
                 onChange={(event) => setAddress(event.target.value)}
               />
             </div>
-            {
-              changeAddressError &&
+            {changeAddressError && (
               <div style={{ marginBottom: "1rem" }}>
                 <InlineNotification
                   kind="error"
@@ -86,9 +80,8 @@ const ChangeAddress = () => {
                   onClose={() => setChangeAddressError(undefined)}
                 />
               </div>
-            }
-            {
-              changeAddressMessage &&
+            )}
+            {changeAddressMessage && (
               <div style={{ marginBottom: "1rem" }}>
                 <InlineNotification
                   kind="success"
@@ -98,10 +91,17 @@ const ChangeAddress = () => {
                   onClose={() => setChangeAddressMessage(undefined)}
                 />
               </div>
-            }
+            )}
 
             <div style={{ marginBottom: "1rem" }}>
-              <Button className="btn-block" type="submit" size="sm" disabled={changeAddressLoading}>Cambiar</Button>
+              <Button
+                className="btn-block"
+                type="submit"
+                size="sm"
+                disabled={changeAddressLoading}
+              >
+                Cambiar
+              </Button>
             </div>
           </Form>
         </div>

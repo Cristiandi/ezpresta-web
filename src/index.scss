@@ -1,7 +1,7 @@
-@use '@carbon/react';
-@use '@carbon/react/scss/breakpoint' as *;
-@use '@carbon/react/scss/type' as *;
-@use '@carbon/grid';
+@use "@carbon/react";
+@use "@carbon/react/scss/breakpoint" as *;
+@use "@carbon/react/scss/type" as *;
+@use "@carbon/grid";
 
 // Emit the flex-grid styles
 @include grid.flex-grid();
@@ -52,6 +52,6 @@ form .cds--inline-notification {
 }
 
 .screen__heading {
-  @include type-style('heading-03');
+  @include type-style("heading-03");
   text-align: center;
 }

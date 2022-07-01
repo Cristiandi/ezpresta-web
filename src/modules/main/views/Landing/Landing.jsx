@@ -56,11 +56,15 @@ const Landing = () => {
                   md={4}
                   lg={7}
                   sm={4}
-                  className="landing-page__tab-content">
-                  <h2 className="landing-page__subheading">¿Que es EZPresta?</h2>
+                  className="landing-page__tab-content"
+                >
+                  <h2 className="landing-page__subheading">
+                    ¿Que es EZPresta?
+                  </h2>
                   <p className="landing-page__p">
-                    EZPresta es una plataforma de prestamos que te permite solicitar prestamos
-                    justos a través de una aplicación móvil, de una manera rápida y sencilla.
+                    EZPresta es una plataforma de prestamos que te permite
+                    solicitar prestamos justos a través de una aplicación móvil,
+                    de una manera rápida y sencilla.
                   </p>
                   <Button>Conoce más</Button>
                 </Column>
@@ -79,11 +83,13 @@ const Landing = () => {
                   md={4}
                   lg={7}
                   sm={4}
-                  className="landing-page__tab-content">
+                  className="landing-page__tab-content"
+                >
                   <h2 className="landing-page__subheading">¿Solicitas?</h2>
                   <p className="landing-page__p">
-                    Primero debes solicitar tu prestamo, lo cual se realiza de una manera sencilla y
-                    solo necesitamos un minímo de información.
+                    Primero debes solicitar tu prestamo, lo cual se realiza de
+                    una manera sencilla y solo necesitamos un minímo de
+                    información.
                     <br />
                     Tú solicitud sera evaluada y te responderemos rapidamente.
                   </p>
@@ -103,11 +109,12 @@ const Landing = () => {
                   md={4}
                   lg={7}
                   sm={4}
-                  className="landing-page__tab-content">
+                  className="landing-page__tab-content"
+                >
                   <h2 className="landing-page__subheading">¿Obtienes?</h2>
                   <p className="landing-page__p">
-                    Una vez tu solicitud sea aprobada, nos pondremos en contacto contigo para
-                    coordinar la entrega de tu prestamo.
+                    Una vez tu solicitud sea aprobada, nos pondremos en contacto
+                    contigo para coordinar la entrega de tu prestamo.
                   </p>
                 </Column>
                 <Column md={4} lg={{ span: 8, offset: 7 }} sm={4}>

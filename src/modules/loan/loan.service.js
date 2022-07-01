@@ -2,10 +2,7 @@ import axios from "axios";
 
 import environment from "../../environment";
 
-import {
-  getIdTokenFromCurrentUser,
-  addMinutes,
-} from "../../utils";
+import { getIdTokenFromCurrentUser, addMinutes } from "../../utils";
 
 class LoanService {
   async getUserLoans({ userAuthUid, limit = undefined }) {
@@ -15,7 +12,7 @@ class LoanService {
       url: `${environment.API_URL}loans/user-loans/${userAuthUid}`,
       method: "GET",
       headers: {
-        "Authorization": `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
       params: {
         limit: limit,
@@ -32,7 +29,7 @@ class LoanService {
       url: `${environment.API_URL}loans/details/${uid}`,
       method: "GET",
       headers: {
-        "Authorization": `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
     });
 

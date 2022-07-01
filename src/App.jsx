@@ -43,7 +43,6 @@ const App = () => {
     setUser(currentUser);
   });
 
-
   return (
     <>
       <GlobalContext.Provider value={{ user }}>
@@ -63,9 +62,18 @@ const App = () => {
             <Route path="/loans" element={<Loans />} />
             <Route path="/loans/:uid" element={<LoanDetails />} />
             <Route path="/loans/:uid/movements" element={<LoanMovements />} />
-            <Route path="/loans/:uid/minimum-loan-payment" element={<MinimumLoanPayment />} />
-            <Route path="/loans/:uid/total-loan-payment" element={<TotalLoanPayment />} />
-            <Route path="/loans/:uid/other-value-loan-payment" element={<OtherValueLoanPayment />} />
+            <Route
+              path="/loans/:uid/minimum-loan-payment"
+              element={<MinimumLoanPayment />}
+            />
+            <Route
+              path="/loans/:uid/total-loan-payment"
+              element={<TotalLoanPayment />}
+            />
+            <Route
+              path="/loans/:uid/other-value-loan-payment"
+              element={<OtherValueLoanPayment />}
+            />
 
             <Route path="/user/profile" element={<Profile />} />
             <Route path="/user/my-data" element={<MyData />} />
@@ -79,6 +87,6 @@ const App = () => {
       </GlobalContext.Provider>
     </>
   );
-}
+};
 
 export default App;

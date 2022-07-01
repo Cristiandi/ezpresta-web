@@ -1,11 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Form,
-  TextInput,
-  Button,
-  InlineNotification,
-} from "@carbon/react";
+import { Form, TextInput, Button, InlineNotification } from "@carbon/react";
 
 import authService from "../../auth.service";
 
@@ -30,7 +25,8 @@ const ResetPassword = () => {
 
   const [resetPasswordEmailError, setResetPasswordEmailError] = useState("");
 
-  const [resetPasswordEmailMessage, setResetPasswordEmailMessage] = useState("");
+  const [resetPasswordEmailMessage, setResetPasswordEmailMessage] =
+    useState("");
 
   const handleResetPasswordSubmit = async (event) => {
     event.preventDefault();
@@ -67,8 +63,7 @@ const ResetPassword = () => {
               />
             </div>
 
-            {
-              resetPasswordEmailError &&
+            {resetPasswordEmailError && (
               <div>
                 <InlineNotification
                   kind="error"
@@ -78,10 +73,9 @@ const ResetPassword = () => {
                   onClose={() => setResetPasswordEmailError("")}
                 />
               </div>
-            }
+            )}
 
-            {
-              resetPasswordEmailMessage &&
+            {resetPasswordEmailMessage && (
               <div>
                 <InlineNotification
                   kind="success"
@@ -91,10 +85,12 @@ const ResetPassword = () => {
                   onClose={() => setResetPasswordEmailMessage(undefined)}
                 />
               </div>
-            }
+            )}
 
             <div style={{ marginBottom: "1rem" }}>
-              <Button className="btn-block" type="submit" size="sm">Enviar</Button>
+              <Button className="btn-block" type="submit" size="sm">
+                Enviar
+              </Button>
             </div>
           </Form>
         </div>

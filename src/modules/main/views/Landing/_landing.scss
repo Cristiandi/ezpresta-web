@@ -1,9 +1,9 @@
-@use '@carbon/react/scss/spacing' as *;
-@use '@carbon/react/scss/type' as *;
-@use '@carbon/react/scss/breakpoint' as *;
-@use '@carbon/react/scss/theme' as *;
-@use './mixins.scss' as *;
-@use './overrides.scss';
+@use "@carbon/react/scss/spacing" as *;
+@use "@carbon/react/scss/type" as *;
+@use "@carbon/react/scss/breakpoint" as *;
+@use "@carbon/react/scss/theme" as *;
+@use "./mixins.scss" as *;
+@use "./overrides.scss";
 
 .landing-page__illo {
   max-width: 100%;
@@ -16,7 +16,7 @@
 }
 
 .landing-page__heading {
-  @include type-style('productive-heading-05');
+  @include type-style("productive-heading-05");
 }
 
 .landing-page__r2 {
@@ -28,13 +28,13 @@
 }
 
 .landing-page__subheading {
-  @include type-style('productive-heading-03');
+  @include type-style("productive-heading-03");
 
   font-weight: 600;
 }
 
 .landing-page__p {
-  @include type-style('productive-heading-03');
+  @include type-style("productive-heading-03");
   margin-top: $spacing-06;
   margin-bottom: $spacing-08;
 
@@ -49,7 +49,7 @@
 }
 
 .landing-page__label {
-  @include type-style('heading-01');
+  @include type-style("heading-01");
 }
 
 .tabs-group {

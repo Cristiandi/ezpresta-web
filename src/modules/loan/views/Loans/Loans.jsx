@@ -1,9 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  InlineLoading,
-  InlineNotification,
-} from "@carbon/react";
+import { InlineLoading, InlineNotification } from "@carbon/react";
 
 import loanService from "../../../loan/loan.service";
 
@@ -13,7 +10,6 @@ import LoanCard from "../../../../components/LoanCard";
 import BackButton from "../../../../components/BackButton";
 
 import { GlobalContext } from "../../../../App.jsx";
-
 
 const Loans = () => {
   const [loansInfo, setLoansInfo] = useState([]);
@@ -40,7 +36,7 @@ const Loans = () => {
     }
 
     setLoansInfoLoading(false);
-  }
+  };
 
   useEffect(() => {
     if (!user) {
@@ -55,17 +51,15 @@ const Loans = () => {
         <div className="cds--offset-lg-5 cds--col-lg-6 cds--col-md-8 cds--col-sm-4">
           <BackButton />
           <h3 className="screen__heading">Tús prestamos</h3>
-          {
-            loansInfoLoading &&
+          {loansInfoLoading && (
             <InlineLoading
               status="active"
               iconDescription="Active loading indicator"
               description="Cargando..."
               className={"center-screen"}
             />
-          }
-          {
-            loansInfoError &&
+          )}
+          {loansInfoError && (
             <div style={{ marginBottom: "1rem" }}>
               <InlineNotification
                 kind="error"
@@ -75,26 +69,20 @@ const Loans = () => {
                 onClose={() => setLoansInfoError(undefined)}
               />
             </div>
-          }
-          {
-            !loansInfoLoading && !loansInfoError && loansInfo &&
+          )}
+          {!loansInfoLoading && !loansInfoError && loansInfo && (
             <>
               <div style={{ marginBottom: "1rem" }}>
                 {loansInfo.map((loanInfo) => {
-                  return (
-                    <LoanCard
-                      key={loanInfo.id}
-                      {...loanInfo}
-                    />
-                  );
+                  return <LoanCard key={loanInfo.id} {...loanInfo} />;
                 })}
               </div>
             </>
-          }
+          )}
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Loans;
