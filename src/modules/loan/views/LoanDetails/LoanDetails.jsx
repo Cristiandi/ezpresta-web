@@ -5,9 +5,11 @@ import {
   InlineNotification,
   Tag,
   Button,
+  IconButton,
 } from "@carbon/react";
 import {
   ChevronRight,
+  Money
 } from "@carbon/icons-react";
 
 import loanService from "../../../loan/loan.service";
@@ -86,10 +88,23 @@ const LoanDetails = () => {
 
     fetchLoanDetails(uid);
     fetchLoanPayments(uid);
+
   }, [navigate, uid, user]);
 
   const handleViewAllLoanMovementsButtonClick = (uid) => {
-    navigate(`/loans/${uid}/movements`);
+    return navigate(`/loans/${uid}/movements`);
+  }
+
+  const handleMinumumLoanPaymentButtonClick = (uid) => {
+    return navigate(`/loans/${uid}/minimum-loan-payment`);
+  }
+
+  const handleTotalLoanPaymentButtonClick = (uid) => {
+    return navigate(`/loans/${uid}/total-loan-payment`);
+  }
+
+  const handleOtherValueLoanPaymentButtonClick = (uid) => {
+    return navigate(`/loans/${uid}/other-value-loan-payment`);
   }
 
   return (
@@ -182,6 +197,49 @@ const LoanDetails = () => {
                     title="Loan status tag">
                     {capitalizeFirstLetter(loanDetails.loanPaymentStatus)}
                   </Tag>
+                </div>
+                <div className="cds--col-lg-16 cds--col-md-8 cds--col-sm-4">
+                  <div className="cds--row">
+                    <div className="cds--col">
+                      <p className="loan-details__label">Pago minimo</p>
+                    </div>
+                    <div className="cds--col">
+                      <p className="loan-details__label">Otro valor</p>
+                    </div>
+                    <div className="cds--col">
+                      <p className="loan-details__label">Pago total</p>
+                    </div>
+                  </div>
+                  <div className="cds--row">
+                    <div className="cds--col loan-details__payment_button_container">
+                      <IconButton
+                        kind="ghost"
+                        size="lg"
+                        label="Pago minimo"
+                        iconDescription="Pago minimo"
+                        disabled={loanDetails.minimumLoanPaymentAmount < 1}
+                        renderIcon={Money}
+                        onClick={() => handleMinumumLoanPaymentButtonClick(uid)} />
+                    </div>
+                    <div className="cds--col loan-details__payment_button_container">
+                      <IconButton
+                        kind="ghost"
+                        size="lg"
+                        label="Otro valor"
+                        iconDescription="Otro valor"
+                        renderIcon={Money}
+                        onClick={() => handleOtherValueLoanPaymentButtonClick(uid)} />
+                    </div>
+                    <div className="cds--col loan-details__payment_button_container">
+                      <IconButton
+                        kind="ghost"
+                        size="lg"
+                        label="Pago total"
+                        iconDescription="Pago total"
+                        renderIcon={Money}
+                        onClick={() => handleTotalLoanPaymentButtonClick(uid)} />
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="cds--row">

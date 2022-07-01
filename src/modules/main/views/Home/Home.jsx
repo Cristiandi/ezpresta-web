@@ -88,8 +88,6 @@ const Home = () => {
       return navigate("/");
     }
 
-    console.log("user", user);
-
     fetchUserInfo(user);
     fetchLoansInfo(user);
   }, [navigate, user]);

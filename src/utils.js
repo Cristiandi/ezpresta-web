@@ -1,5 +1,7 @@
 import { getAuth } from "firebase/auth";
 
+import environment from "./environment";
+
 import firebaseApp from "./firebase";
 
 export const setFirebaseProviderId = (value = "") => {
@@ -105,4 +107,16 @@ export const subtractMinutes = (date = new Date(), minutes = 0) => {
   const result = new Date(date);
   result.setMinutes(result.getMinutes() - minutes);
   return result;
+};
+
+export const calculateEpaycoFee = (value = 0) => {
+  return value * 0.03 + 900;
+};
+
+export const buildWhatsappLinkForCoordinationPaymentMessage = ({ amount, loanUid }) => {
+  const phoneNumber = environment.CRISTIANDI_PHONE_NUMBER;
+  const message = `Hola, deseo pagar ${formatCurrency(amount)} para el préstamo: ${loanUid}. ` +
+    "Como podemos coordinar?"
+
+  return `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
 };
