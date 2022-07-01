@@ -9,10 +9,11 @@
   "plugins": ["react", "import", "jsx-a11y"],
   "rules": {
     "react/prop-types": 0,
-    "indent": ["error", 2],
     "linebreak-style": 1,
     "quotes": ["error", "double"],
-    "no-console": ["error", { "allow": ["warn", "error", "time", "timeEnd"] }]
+    "no-console": ["error", { "allow": ["warn", "error", "time", "timeEnd"] }],
+    "comma-dangle": ["error", "only-multiline"],
+    "semi": ["error", "always"]
   },
   "parserOptions": {
     "ecmaVersion": 2021,

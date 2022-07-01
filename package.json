@@ -72,13 +72,12 @@
     }
   },
   "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown",
     "*.js": [
-      "npm run lint:fix",
-      "prettier --write"
+      "npm run lint:fix"
     ],
     "*.jsx": [
-      "npm run lint:fix",
-      "prettier --write"
+      "npm run lint:fix"
     ]
   }
 }
