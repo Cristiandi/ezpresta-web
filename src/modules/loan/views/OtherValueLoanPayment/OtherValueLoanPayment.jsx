@@ -42,7 +42,7 @@ const MinimumLoanPayment = () => {
     try {
       const [data] = await Promise.all([
         loanService.getLoanDetails({ uid }),
-        delay(2000),
+        delay(),
       ]);
 
       setLoanDetails(data);

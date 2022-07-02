@@ -47,7 +47,7 @@ const LoanDetails = () => {
     try {
       const [data] = await Promise.all([
         loanService.getLoanDetails({ uid }),
-        delay(2000),
+        delay(),
       ]);
 
       setLoanDetails(data);
@@ -64,7 +64,7 @@ const LoanDetails = () => {
     try {
       const [data] = await Promise.all([
         movementService.getLoanPayments({ uid, limit: 3 }),
-        delay(2000),
+        delay(),
       ]);
 
       setLoanPayments(data);

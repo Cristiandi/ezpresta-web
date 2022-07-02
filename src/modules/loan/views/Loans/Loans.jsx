@@ -27,7 +27,7 @@ const Loans = () => {
     try {
       const [data] = await Promise.all([
         loanService.getUserLoans({ userAuthUid: user.uid }),
-        delay(2000),
+        delay(),
       ]);
 
       setLoansInfo(data);

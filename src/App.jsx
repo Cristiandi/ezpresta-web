@@ -26,6 +26,7 @@ import OtherValueLoanPayment from "./modules/loan/views/OtherValueLoanPayment";
 
 import LoanRequests from "./modules/loan-request/views/LoanRequests";
 import CreateLoanRequest from "./modules/loan-request/views/CreateLoanRequest";
+import LoanRequestDetails from "./modules/loan-request/views/LoanRequestDetails";
 
 import Profile from "./modules/user/views/Profile";
 import MyData from "./modules/user/views/MyData";
@@ -82,6 +83,10 @@ const App = () => {
             <Route
               path="/loan-requests/create"
               element={<CreateLoanRequest />}
+            />
+            <Route
+              path="/loan-requests/:uid"
+              element={<LoanRequestDetails />}
             />
 
             <Route path="/user/profile" element={<Profile />} />

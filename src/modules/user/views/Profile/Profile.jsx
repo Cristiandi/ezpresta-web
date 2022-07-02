@@ -42,7 +42,7 @@ const Profile = () => {
     try {
       const [data] = await Promise.all([
         userService.getOne({ authUid: user.uid }),
-        delay(2000),
+        delay(),
       ]);
 
       setUserInfo(data);

@@ -29,8 +29,10 @@ export const getIdTokenFromCurrentUser = async () => {
 };
 
 export const delay = (ms) => {
+  const timeToWait = ms || parseInt(environment.DELAY_TIME, 10);
+
   return new Promise((resolve) => {
-    setTimeout(resolve, ms);
+    setTimeout(resolve, timeToWait);
   });
 };
 

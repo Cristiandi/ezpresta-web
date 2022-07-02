@@ -52,7 +52,7 @@ const Home = () => {
     try {
       const [data] = await Promise.all([
         userService.getOne({ authUid: user.uid }),
-        delay(2000),
+        delay(),
       ]);
 
       setUserInfo(data);
@@ -69,7 +69,7 @@ const Home = () => {
     try {
       const [data] = await Promise.all([
         loanService.getUserLoans({ userAuthUid: user.uid, limit: 2 }),
-        delay(2000),
+        delay(),
       ]);
 
       setLoansInfo(data);

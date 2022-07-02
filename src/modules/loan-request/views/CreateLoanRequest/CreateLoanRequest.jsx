@@ -37,6 +37,10 @@ const CreateLoanRequest = () => {
   const handleCreateLoanRequestSubmit = async (event) => {
     event.preventDefault();
 
+    // cleaning the messages
+    setCreateLoanRequestError(undefined);
+    setCreateLoanRequestMessage(undefined);
+
     if (!description || description.trim().length === 0) {
       setInvalidDescription(true);
       return;
@@ -65,8 +69,18 @@ const CreateLoanRequest = () => {
       });
       setCreateLoanRequestMessage(message);
     } catch (error) {
-      setCreateLoanRequestError(getMessageFromAxiosError(error));
+      const errorMessage = getMessageFromAxiosError(error);
+
+      if (errorMessage.includes("CREADA")) {
+        setCreateLoanRequestError(
+          "Ya tienes una solicitud de préstamo en curso"
+        );
+      } else {
+        setCreateLoanRequestError(getMessageFromAxiosError(error));
+      }
     }
+
+    setCreateLoanRequestLoading(false);
   };
 
   return (
@@ -99,7 +113,7 @@ const CreateLoanRequest = () => {
                 <InlineNotification
                   kind="error"
                   icondescription="close button"
-                  subtitle={<span>{createLoanRequestError}</span>}
+                  subtitle={createLoanRequestError}
                   title="Uups!"
                   onClose={() => setCreateLoanRequestError(undefined)}
                 />
@@ -110,7 +124,7 @@ const CreateLoanRequest = () => {
                 <InlineNotification
                   kind="success"
                   icondescription="close button"
-                  subtitle={<span>{createLoanRequestMessage}</span>}
+                  subtitle={createLoanRequestMessage}
                   title="Cool!"
                   onClose={() => setCreateLoanRequestMessage(undefined)}
                 />

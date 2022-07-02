@@ -5,7 +5,9 @@ import {
   InlineNotification,
   Pagination,
   Button,
+  IconButton,
 } from "@carbon/react";
+import { View } from "@carbon/icons-react";
 
 import loanRequestService from "../../loan-request.service";
 
@@ -40,25 +42,6 @@ const headers = [
   },
 ];
 
-const getRowItems = (rows) =>
-  rows.map((row) => {
-    let color;
-    if (row?.status === "CREADA") color = "yellow";
-    if (row?.status === "REVISION") color = "orange";
-    if (row?.status === "RECHAZADA") color = "red";
-    if (row?.status === "APROBADA") color = "green";
-
-    const amountToRender = formatCurrency(row?.amount);
-
-    return {
-      ...row,
-      id: "" + row.id,
-      createdAt: formatDate(row.createdAt),
-      amount: amountToRender,
-      status: <span style={{ color }}>{row.status}</span>,
-    };
-  });
-
 const LoanRequests = () => {
   const [loanRequests, setLoanRequests] = useState([]);
   const [loanRequestsLoading, setLoanRequestsLoading] = useState(true);
@@ -72,6 +55,35 @@ const LoanRequests = () => {
 
   const { user } = ctx;
 
+  const getRowItems = (rows) =>
+    rows.map((row) => {
+      let color;
+      if (row?.status === "CREADA") color = "yellow";
+      if (row?.status === "REVISION") color = "orange";
+      if (row?.status === "RECHAZADA") color = "red";
+      if (row?.status === "APROBADA") color = "green";
+
+      const amountToRender = formatCurrency(row?.amount);
+
+      return {
+        ...row,
+        id: "" + row.id,
+        createdAt: formatDate(row.createdAt),
+        amount: amountToRender,
+        status: <span style={{ color }}>{row.status}</span>,
+        actions: (
+          <IconButton
+            kind="ghost"
+            size="sm"
+            label="Ver solicitud"
+            iconDescription="Ver solicitud"
+            renderIcon={View}
+            onClick={() => navigate(`/loan-requests/${row.uid}`)}
+          />
+        ),
+      };
+    });
+
   const fetchLoanRequests = async (userAuthUid) => {
     setLoanRequestsLoading(true);
 
@@ -80,7 +92,7 @@ const LoanRequests = () => {
         loanRequestService.getUserLoanRequests({
           userAuthUid,
         }),
-        delay(2000),
+        delay(),
       ]);
 
       if (data.length > 0) {

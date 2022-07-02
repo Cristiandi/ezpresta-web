@@ -77,7 +77,7 @@ const LoanMovements = () => {
           uid,
           startDate: dateToGetLoanMovements,
         }),
-        delay(2000),
+        delay(),
       ]);
 
       if (data.length > 0) {
