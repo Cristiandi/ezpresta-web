@@ -90,7 +90,11 @@ const Home = () => {
   }, [navigate, user]);
 
   const handleViewAllLoansButtonClick = () => {
-    navigate("/loans");
+    return navigate("/loans");
+  };
+
+  const handleViewLoanRequestButtonClick = () => {
+    return navigate("/loan-requests");
   };
 
   return (
@@ -111,13 +115,20 @@ const Home = () => {
                 <p>{greet()}</p>
                 <h3>{formatFirstName(userInfo.fullName)}</h3>
               </div>
-              <div style={{ marginBottom: "1rem" }}>
-                {loansInfo.map((loanInfo, index) => {
-                  if (!index) {
-                    return <LoanCard key={loanInfo.id} {...loanInfo} />;
-                  }
-                })}
-              </div>
+              {!loansInfo.length && (
+                <div style={{ marginBottom: "1rem" }}>
+                  <p>Aún no tienes préstamos</p>
+                </div>
+              )}
+              {loansInfo.length > 0 && (
+                <div style={{ marginBottom: "1rem" }}>
+                  {loansInfo.map((loanInfo, index) => {
+                    if (!index) {
+                      return <LoanCard key={loanInfo.id} {...loanInfo} />;
+                    }
+                  })}
+                </div>
+              )}
               {loansInfo.length > 1 && (
                 <div style={{ marginBottom: "1rem" }}>
                   <Button
@@ -132,6 +143,18 @@ const Home = () => {
                   </Button>
                 </div>
               )}
+              <div style={{ marginBottom: "1rem" }}>
+                <Button
+                  kind="ghost"
+                  size="sm"
+                  label="Solicitudes de préstamo"
+                  iconDescription="Solicitudes de préstamo"
+                  renderIcon={ChevronRight}
+                  onClick={handleViewLoanRequestButtonClick}
+                >
+                  Solicitudes de préstamo
+                </Button>
+              </div>
             </>
           )}
         </div>

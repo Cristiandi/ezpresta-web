@@ -97,6 +97,7 @@ const LoanMovements = () => {
 
     fetchLoanMovements(uid);
   }, [navigate, uid, user]);
+
   return (
     <div className="cds--grid">
       <div className="cds--row">
@@ -123,34 +124,32 @@ const LoanMovements = () => {
             </div>
           )}
           {!loanMovementsLoading && !loanMovementsError && loanMovements && (
-            <>
-              <div style={{ marginBottom: "1rem" }}>
-                <AppDataTable
-                  title={"Lista"}
-                  description={"de los ultimos 30 días"}
-                  headers={headers}
-                  rows={loanMovements.slice(
-                    firstRowIndex,
-                    firstRowIndex + currentPageSize
-                  )}
-                />
-                <Pagination
-                  totalItems={loanMovements.length}
-                  backwardText="Anterior"
-                  forwardText="Siguiente"
-                  pageSize={currentPageSize}
-                  pageSizes={[5, 10, 15, 25]}
-                  itemsPerPageText=""
-                  onChange={({ page, pageSize }) => {
-                    if (pageSize !== currentPageSize) {
-                      setCurrentPageSize(pageSize);
-                    }
-                    setFirstRowIndex(pageSize * (page - 1));
-                  }}
-                  size="sm"
-                />
-              </div>
-            </>
+            <div style={{ marginBottom: "1rem" }}>
+              <AppDataTable
+                title={"Lista"}
+                description={"de los ultimos 30 días"}
+                headers={headers}
+                rows={loanMovements.slice(
+                  firstRowIndex,
+                  firstRowIndex + currentPageSize
+                )}
+              />
+              <Pagination
+                totalItems={loanMovements.length}
+                backwardText="Anterior"
+                forwardText="Siguiente"
+                pageSize={currentPageSize}
+                pageSizes={[5, 10, 15, 25]}
+                itemsPerPageText=""
+                onChange={({ page, pageSize }) => {
+                  if (pageSize !== currentPageSize) {
+                    setCurrentPageSize(pageSize);
+                  }
+                  setFirstRowIndex(pageSize * (page - 1));
+                }}
+                size="sm"
+              />
+            </div>
           )}
         </div>
       </div>
