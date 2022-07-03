@@ -38,6 +38,42 @@ class LoanService {
       loanPaymentDate: addMinutes(data.loanPaymentDate, 5 * 60),
     };
   }
+
+  async createEpaycoTransaction({ uid, amount }) {
+    const token = await getIdTokenFromCurrentUser();
+
+    // eslint-disable-next-line no-console
+    console.log("amount", Math.ceil(amount));
+
+    const { data } = await axios({
+      url: `${environment.API_URL}epayco-transactions`,
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      data: {
+        loanUid: uid,
+        amount: Math.ceil(amount),
+      },
+    });
+
+    return data;
+  }
+
+  async getEpaycoTrasaction({ ePaycoRef }) {
+    // eslint-disable-next-line no-console
+    console.log(
+      `https://secure.epayco.co/validation/v1/reference/${ePaycoRef}`
+    );
+
+    const { data } = await axios({
+      url: `https://secure.epayco.co/validation/v1/reference/${ePaycoRef}`,
+      method: "GET",
+      headers: {},
+    });
+
+    return { ...data.data };
+  }
 }
 
 const loanService = new LoanService();

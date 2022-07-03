@@ -114,6 +114,13 @@ export const calculateEpaycoFee = (value = 0) => {
   return value * 0.03 + 900;
 };
 
+export const shouldUseEpayco = (value = 0) => {
+  const epaycoFee = calculateEpaycoFee(value);
+  const valueFraction = value * 0.1;
+
+  return epaycoFee > valueFraction;
+};
+
 export const buildWhatsappLinkForCoordinationPaymentMessage = ({
   amount,
   loanUid,

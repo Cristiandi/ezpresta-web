@@ -27,6 +27,7 @@ import OtherValueLoanPayment from "./modules/loan/views/OtherValueLoanPayment";
 import LoanRequests from "./modules/loan-request/views/LoanRequests";
 import CreateLoanRequest from "./modules/loan-request/views/CreateLoanRequest";
 import LoanRequestDetails from "./modules/loan-request/views/LoanRequestDetails";
+import EpaycoResponse from "./modules/loan/views/EpaycoResponse";
 
 import Profile from "./modules/user/views/Profile";
 import MyData from "./modules/user/views/MyData";
@@ -78,6 +79,7 @@ const App = () => {
               path="/loans/:uid/other-value-loan-payment"
               element={<OtherValueLoanPayment />}
             />
+            <Route path="/loans/epayco/response" element={<EpaycoResponse />} />
 
             <Route path="/loan-requests" element={<LoanRequests />} />
             <Route
