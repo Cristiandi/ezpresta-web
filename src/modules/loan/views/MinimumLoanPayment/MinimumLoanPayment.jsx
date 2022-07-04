@@ -141,6 +141,7 @@ const MinimumLoanPayment = () => {
       // extra2: "extra2",
       // extra3: "extra3",
       confirmation: environment.API_URL + "epayco-transactions/confirmation",
+      methodconfirmation: "post",
       response: environment.SELF_URL + "loans/epayco/response",
 
       //Atributos cliente
