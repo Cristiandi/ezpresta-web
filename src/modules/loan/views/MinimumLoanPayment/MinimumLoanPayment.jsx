@@ -89,8 +89,7 @@ const MinimumLoanPayment = () => {
     setePaycoHandler(
       window.ePayco.checkout.configure({
         key: environment.EPAYCO_PUBLIC_KEY,
-        // test: environment.EPAYCO_TESTING,
-        test: true,
+        test: environment.EPAYCO_TESTING,
       })
     );
 
@@ -142,7 +141,7 @@ const MinimumLoanPayment = () => {
       // extra2: "extra2",
       // extra3: "extra3",
       confirmation: environment.API_URL + "epayco-transactions/confirmation",
-      p_confirm_method: "post",
+      // p_confirm_method: "post",
       response: environment.SELF_URL + "loans/epayco/response",
 
       //Atributos cliente

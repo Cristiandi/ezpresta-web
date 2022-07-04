@@ -7,8 +7,6 @@ import loanService from "../../loan.service";
 
 import { delay, getMessageFromAxiosError } from "../../../../utils";
 
-import BackButton from "../../../../components/BackButton";
-
 import { GlobalContext } from "../../../../App.jsx";
 
 const EpaycoResponse = () => {
@@ -59,7 +57,6 @@ const EpaycoResponse = () => {
     <div className="cds--grid">
       <div className="cds--row">
         <div className="cds--offset-lg-5 cds--col-lg-6 cds--col-md-8 cds--col-sm-4">
-          <BackButton />
           <h3 className="screen__heading">Detalles del pago en EPayco</h3>
           {ePaycoTransactionLoading && (
             <InlineLoading
