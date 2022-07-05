@@ -116,9 +116,9 @@ export const calculateEpaycoFee = (value = 0) => {
 
 export const shouldUseEpayco = (value = 0) => {
   const epaycoFee = calculateEpaycoFee(value);
-  const valueFraction = value * 0.1;
+  const fractionValue = value * 0.1;
 
-  return epaycoFee > valueFraction;
+  return epaycoFee < fractionValue;
 };
 
 export const buildWhatsappLinkForCoordinationPaymentMessage = ({

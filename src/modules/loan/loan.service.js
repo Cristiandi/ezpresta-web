@@ -74,6 +74,52 @@ class LoanService {
 
     return { ...data.data };
   }
+
+  prepareEPaycoData({
+    invoice,
+    amount,
+    name_billing,
+    address_billing,
+    mobilephone_billing,
+    number_doc_billing,
+  }) {
+    // define ther data for epayco checkout
+    const data = {
+      //Parametros compra (obligatorio)
+      name: "Pago de servicios profesionales",
+      description: "Pago de servicios profesionales",
+      invoice,
+      currency: "cop",
+      amount,
+      tax_base: "0",
+      tax: "0",
+      country: "co",
+      lang: "es",
+
+      //Onpage="false" - Standard="true"
+      external: "true",
+
+      //Atributos opcionales
+      // extra1: "extra1"
+      // extra2: "extra2",
+      // extra3: "extra3",
+      confirmation: environment.API_URL + "epayco-transactions/confirmation",
+      // p_confirm_method: "post",
+      response: environment.API_URL + "epayco-transactions/response",
+
+      //Atributos cliente
+      name_billing,
+      address_billing,
+      type_doc_billing: "cc",
+      mobilephone_billing,
+      number_doc_billing,
+
+      //atributo deshabilitación metodo de pago
+      // methodsDisable: ["TDC", "PSE", "SP", "CASH", "DP"],
+    };
+
+    return data;
+  }
 }
 
 const loanService = new LoanService();

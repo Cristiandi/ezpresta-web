@@ -23,11 +23,11 @@ import { GlobalContext } from "../../../../App.jsx";
 const MinimumLoanPayment = () => {
   const [loanDetails, setLoanDetails] = useState(undefined);
   const [loanDetailsLoading, setLoanDetailsLoading] = useState(true);
-  const [loanDetailsError, setLoanDetailsError] = useState("");
+  const [loanDetailsError, setLoanDetailsError] = useState(undefined);
 
   const [userInfo, setUserInfo] = useState(undefined);
   const [userInfoLoading, setUserInfoLoading] = useState(true);
-  const [userInfoError, setUserInfoError] = useState("");
+  const [userInfoError, setUserInfoError] = useState(undefined);
 
   const [createEpaycoTransactionLoading, setCreateEpaycoTransactionLoading] =
     useState(false);
@@ -111,6 +111,7 @@ const MinimumLoanPayment = () => {
 
     let epaycoTransaction;
 
+    // create the epayco transaction in the backend
     try {
       epaycoTransaction = await loanService.createEpaycoTransaction({
         amount: loanDetails.minimumLoanPaymentAmount,
@@ -121,6 +122,7 @@ const MinimumLoanPayment = () => {
       return;
     }
 
+    // define ther data for epayco checkout
     const data = {
       //Parametros compra (obligatorio)
       name: "Pago de servicios profesionales",
@@ -166,14 +168,15 @@ const MinimumLoanPayment = () => {
         <div className="cds--offset-lg-5 cds--col-lg-6 cds--col-md-8 cds--col-sm-4">
           <BackButton />
           <h3 className="screen__heading">Pago mínimo</h3>
-          {loanDetailsLoading && (
-            <InlineLoading
-              status="active"
-              iconDescription="Active loading indicator"
-              description="Cargando..."
-              className={"center-screen"}
-            />
-          )}
+          {loanDetailsLoading ||
+            (userInfoLoading && (
+              <InlineLoading
+                status="active"
+                iconDescription="Active loading indicator"
+                description="Cargando..."
+                className={"center-screen"}
+              />
+            ))}
           {loanDetailsError && (
             <div style={{ marginBottom: "1rem" }}>
               <InlineNotification
@@ -235,22 +238,21 @@ const MinimumLoanPayment = () => {
                     Coordinar pago
                   </Button>
                 </div>
-                <div style={{ marginBottom: "1rem" }}>
-                  <Button
-                    className="btn-block"
-                    size="sm"
-                    kind="secondary"
-                    style={{ width: "100%", maxWidth: "100%" }}
-                    renderIcon={Currency}
-                    disabled={
-                      shouldUseEpayco(loanDetails.minimumLoanPaymentAmount) ||
-                      createEpaycoTransactionLoading
-                    }
-                    onClick={handlePaymentWithEPaycoButtonClick}
-                  >
-                    Pagar con EPAYCO
-                  </Button>
-                </div>
+                {shouldUseEpayco(loanDetails.minimumLoanPaymentAmount) && (
+                  <div style={{ marginBottom: "1rem" }}>
+                    <Button
+                      className="btn-block"
+                      size="sm"
+                      kind="secondary"
+                      style={{ width: "100%", maxWidth: "100%" }}
+                      renderIcon={Currency}
+                      disabled={createEpaycoTransactionLoading}
+                      onClick={handlePaymentWithEPaycoButtonClick}
+                    >
+                      Pagar con EPAYCO
+                    </Button>
+                  </div>
+                )}
               </>
             )}
         </div>
