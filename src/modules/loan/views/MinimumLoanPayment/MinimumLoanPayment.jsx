@@ -123,39 +123,14 @@ const MinimumLoanPayment = () => {
     }
 
     // define ther data for epayco checkout
-    const data = {
-      //Parametros compra (obligatorio)
-      name: "Pago de servicios profesionales",
-      description: "Pago de servicios profesionales",
-      invoice: epaycoTransaction.uid,
-      currency: "cop",
-      amount: epaycoTransaction.amount,
-      tax_base: "0",
-      tax: "0",
-      country: "co",
-      lang: "es",
-
-      //Onpage="false" - Standard="true"
-      external: "true",
-
-      //Atributos opcionales
-      // extra1: "extra1"
-      // extra2: "extra2",
-      // extra3: "extra3",
-      confirmation: environment.API_URL + "epayco-transactions/confirmation",
-      // p_confirm_method: "post",
-      response: environment.API_URL + "epayco-transactions/response",
-
-      //Atributos cliente
+    const data = loanService.prepareEPaycoData({
+      invoice: epaycoTransaction?.uid,
+      amount: epaycoTransaction?.amount,
       name_billing: userInfo?.fullName,
       address_billing: userInfo?.address,
-      type_doc_billing: "cc",
       mobilephone_billing: userInfo?.phone,
       number_doc_billing: userInfo?.documentNumber,
-
-      //atributo deshabilitación metodo de pago
-      // methodsDisable: ["TDC", "PSE", "SP", "CASH", "DP"],
-    };
+    });
 
     await ePaycoHandler.open(data);
 
@@ -168,15 +143,14 @@ const MinimumLoanPayment = () => {
         <div className="cds--offset-lg-5 cds--col-lg-6 cds--col-md-8 cds--col-sm-4">
           <BackButton />
           <h3 className="screen__heading">Pago mínimo</h3>
-          {loanDetailsLoading ||
-            (userInfoLoading && (
-              <InlineLoading
-                status="active"
-                iconDescription="Active loading indicator"
-                description="Cargando..."
-                className={"center-screen"}
-              />
-            ))}
+          {(loanDetailsLoading || userInfoLoading) && (
+            <InlineLoading
+              status="active"
+              iconDescription="Active loading indicator"
+              description="Cargando..."
+              className={"center-screen"}
+            />
+          )}
           {loanDetailsError && (
             <div style={{ marginBottom: "1rem" }}>
               <InlineNotification

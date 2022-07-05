@@ -72,7 +72,6 @@
     }
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown",
     "*.js": [
       "npm run lint:fix"
     ],
