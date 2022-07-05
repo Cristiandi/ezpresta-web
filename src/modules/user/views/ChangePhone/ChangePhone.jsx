@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Form, NumberInput, InlineNotification, Button } from "@carbon/react";
+import { Form, TextInput, InlineNotification, Button } from "@carbon/react";
 
 import userService from "../../../user/user.service.js";
 
@@ -36,6 +36,12 @@ const ChangePhone = () => {
       setInvalidPhone(true);
       return;
     }
+    // check if phone is a number
+    if (isNaN(parseInt(phone, 10))) {
+      setInvalidPhone(true);
+      return;
+    }
+
     setInvalidPhone(false);
 
     setChangePhoneLoading(true);
@@ -62,7 +68,7 @@ const ChangePhone = () => {
           <h3 className="screen__heading">Cambiar télefono</h3>
           <Form onSubmit={handleChangePhoneSubmit}>
             <div style={{ marginBottom: "1rem" }}>
-              <NumberInput
+              <TextInput
                 id="phone"
                 labelText="Télefono"
                 invalid={invalidPhone}

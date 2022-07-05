@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import {
   Form,
   TextInput,
-  NumberInput,
   PasswordInput,
   Button,
   InlineNotification,
@@ -53,6 +52,10 @@ const Register = () => {
       setInvalidDocumentNumber(true);
       return;
     }
+    if (isNaN(parseInt(documentNumber, 10))) {
+      setInvalidDocumentNumber(true);
+      return;
+    }
     setInvalidDocumentNumber(false);
 
     if (!fullName || fullName.trim().length === 0) {
@@ -62,6 +65,10 @@ const Register = () => {
     setInvalidFullName(false);
 
     if (!phone || phone.trim().length === 0) {
+      setInvalidPhone(true);
+      return;
+    }
+    if (isNaN(parseInt(phone, 10))) {
       setInvalidPhone(true);
       return;
     }
@@ -123,7 +130,7 @@ const Register = () => {
         <div className="cds--offset-lg-5 cds--col-lg-6 cds--col-md-8 cds--col-sm-4">
           <Form onSubmit={handleRegisterSubmit}>
             <div style={{ marginBottom: "1rem" }}>
-              <NumberInput
+              <TextInput
                 id="documentNumber"
                 label="Número de documento"
                 invalid={invalidDocumentNumber}
@@ -144,7 +151,7 @@ const Register = () => {
             </div>
 
             <div style={{ marginBottom: "1rem" }}>
-              <NumberInput
+              <TextInput
                 id="phone"
                 label="Número de celular"
                 invalid={invalidPhone}
