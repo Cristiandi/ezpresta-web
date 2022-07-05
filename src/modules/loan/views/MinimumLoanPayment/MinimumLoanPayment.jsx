@@ -85,7 +85,8 @@ const MinimumLoanPayment = () => {
       return navigate("/");
     }
 
-    // console.log("ePayco", window.ePayco);
+    // eslint-disable-next-line no-console
+    console.log("environment.EPAYCO_TESTING", environment.EPAYCO_TESTING);
     setePaycoHandler(
       window.ePayco.checkout.configure({
         key: environment.EPAYCO_PUBLIC_KEY,
