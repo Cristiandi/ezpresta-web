@@ -132,7 +132,7 @@ const Register = () => {
             <div style={{ marginBottom: "1rem" }}>
               <TextInput
                 id="documentNumber"
-                label="Número de documento"
+                labelText="Número de documento"
                 invalid={invalidDocumentNumber}
                 invalidText="Valor inválido"
                 iconDescription="none"
@@ -153,7 +153,7 @@ const Register = () => {
             <div style={{ marginBottom: "1rem" }}>
               <TextInput
                 id="phone"
-                label="Número de celular"
+                labelText="Número de celular"
                 invalid={invalidPhone}
                 invalidText="Valor inválido"
                 onChange={(event) => setPhone(event.target.value)}
