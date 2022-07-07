@@ -26,7 +26,7 @@ const greet = () => {
   if (hour < 12) {
     return "Buenos días";
   }
-  if (hour < 12 && hour < 18) {
+  if (hour >= 12 && hour < 18) {
     return "Buenas tardes";
   }
   if (hour >= 18) {
