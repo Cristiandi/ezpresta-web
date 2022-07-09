@@ -1112,16 +1112,16 @@
   resolved "https://registry.npmjs.org/@carbon/motion/-/motion-11.2.0.tgz"
   integrity sha512-q48CjWFLYlNeGDYTLpogHjJlUfYefvMKQfvk1TVnsgOCNdcbJO+Bt89M9fax/35Mq1DD6v2Mcw2e+sR0B7awJQ==
 
-"@carbon/react@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.npmjs.org/@carbon/react/-/react-1.5.0.tgz"
-  integrity sha512-/EF5Sw1MsKL+KmsBeZOQItMqdfoBaw/Nh5RvLtDg9HUvNQNjP9iui++PgxGwWss8Emls4RM6Gg42bq1LflunqA==
+"@carbon/react@1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@carbon/react/-/react-1.7.0.tgz#a9250546030a0ccaebcea4fe66dc83b67b5eca48"
+  integrity sha512-m1UbgoYyQJFVRYf49/FrLj/6uk8GiNAJ1auKp9JGAAqpbT7fsBrihV5ijFuogIUlYgeSley2SsFLECCEUdDRKQ==
   dependencies:
     "@babel/runtime" "^7.18.3"
     "@carbon/feature-flags" "^0.8.0"
     "@carbon/icons-react" "^11.5.0"
     "@carbon/layout" "^11.3.0"
-    "@carbon/styles" "^1.5.0"
+    "@carbon/styles" "^1.7.0"
     "@carbon/telemetry" "0.1.0"
     classnames "2.3.1"
     copy-to-clipboard "^3.3.1"
@@ -1139,10 +1139,10 @@
     wicg-inert "^3.1.1"
     window-or-global "^1.0.1"
 
-"@carbon/styles@^1.5.0":
-  version "1.6.0"
-  resolved "https://registry.npmjs.org/@carbon/styles/-/styles-1.6.0.tgz"
-  integrity sha512-jrcLUXxypaPdCZL5v64cPCzkS19eIgkf7bQ+KiF8uDvTznarsLuiEqFviWUiQGyHB+npes82VesGtJ7USU/6zw==
+"@carbon/styles@^1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@carbon/styles/-/styles-1.7.0.tgz#05e2becc71cac2b0ea25e13e85c6bc047e88cd3c"
+  integrity sha512-XPy+oj0EIj4QtW0M6VhPZrGciikvR0ee9Cyy52nxyjwjj6TuCjL6WT+C4/q/q9iqb8bY6K9nwF7oJnZ4X7pp1Q==
   dependencies:
     "@carbon/colors" "^11.3.0"
     "@carbon/feature-flags" "^0.8.0"
