@@ -7,6 +7,8 @@ import "./app.scss";
 
 import firebaseApp from "./firebase";
 
+import { delay } from "./utils";
+
 import AppHeader from "./components/AppHeader";
 
 import Landing from "./modules/main/views/Landing";
@@ -47,7 +49,10 @@ const App = () => {
 
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
-    setLoading(false);
+
+    delay(500).then(() => {    
+      setLoading(false);
+    });
   });
 
   return (
