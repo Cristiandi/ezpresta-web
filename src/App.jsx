@@ -66,7 +66,7 @@ const App = () => {
             className={"center-screen"}
           />
         )}
-        {!loading && (
+        {(!loading && user !== undefined) && (
           <>
             <Theme theme="g100">
               <AppHeader />
